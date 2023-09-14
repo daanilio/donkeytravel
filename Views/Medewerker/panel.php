@@ -15,6 +15,7 @@
 <main>
 
 </main>
+
 <?php include '../../Components/footer.php'; ?>
 
 </body>
