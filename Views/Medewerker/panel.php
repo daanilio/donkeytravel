@@ -10,7 +10,11 @@
 </head>
 <body>
 <?php
-include "../../Components/header.html";
+
+include '../../Components/header.php';
+//require $_SERVER["DOCUMENT_ROOT"] ."/donkeytravel/Components/header.php";
+//echo $_SERVER["DOCUMENT_ROOT"];
+//header("Location: http://".$_SERVER["DOCUMENT_ROOT"]."/donkeytravel/components/header.php");
 ?>
 
 </body>
