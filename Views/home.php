@@ -35,7 +35,7 @@
         </div>
         <div class="flex justify-end uppercase text-sm">
             <a href="#" class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Inloggen</a>
-            <img class="flex m-0 p-0" src="images/person.png" alt="account icon" style="max-width: 40px;">
+            <img class="flex m-0 p-0" src="../Images/person.png" alt="account icon" style="max-width: 40px;">
         </div>
     </nav>
 </div>
@@ -43,7 +43,7 @@
 <div class="p-24">
     <div class="grid grid-cols-4 gap-4 h-36 text-center w-full">
         <div class="col-span-2 mx-auto ">
-            <img class="rounded-3xl border-4 border-gray-800" src="images/foto_van_ezel.jpg" alt="">
+            <img class="rounded-3xl border-4 border-gray-800" src="../Images/foto_van_ezel.jpg" alt="">
         </div>
         <div class="col-span-2 text-left p-12 rounded-3xl border-4 border-gray-800 bg-green-800 text-white">
             <div>
@@ -100,7 +100,7 @@
     </div>
 </div>
 
-<?php include "footer.html" ?>
+<?php include "../Components/footer.html" ?>
 
 </body>
 </html>
