@@ -9,15 +9,15 @@
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
-<?php
 
-include '../../Components/header.php';
-//require $_SERVER["DOCUMENT_ROOT"] ."/donkeytravel/Components/header.php";
-//echo $_SERVER["DOCUMENT_ROOT"];
-//header("Location: http://".$_SERVER["DOCUMENT_ROOT"]."/donkeytravel/components/header.php");
-?>
+<?php include '../../Components/header.php'; ?>
+
+<main>
+
+</main>
+<?php include '../../Components/footer.php'; ?>
 
 </body>
 </html>
 
-<?php
+
