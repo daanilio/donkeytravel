@@ -65,28 +65,41 @@ class Reserveer
     {
         require "../../Database/db.php";
 
-        echo "<br>" . $reserveerVoornaam = $this->getReserveerVoornaam();
-        echo "<br>" . $reserveerAchternaam = $this->getReserveerAchternaam();
-        echo "<br>" . $reserveerTelefoon = $this->getReserveerTelefoon();
-        echo "<br>" . $reserveerEmail = $this->getReserveerEmail();
-        echo "<br>" . $reserveerPersonen = $this->getreserveerPersonen();
-        echo "<br>" . $reserveerDatum = $this->getReserveerDatum();
+        $reserveerVoornaam = $this->getReserveerVoornaam();
+        $reserveerAchternaam = $this->getReserveerAchternaam();
+        $reserveerTelefoon = $this->getReserveerTelefoon();
+        $reserveerEmail = $this->getReserveerEmail();
+        $reserveerPersonen = $this->getreserveerPersonen();
+        $reserveerDatum = $this->getReserveerDatum();
 
-        // SQL query: voor invoer in de tabel
-        $sql = $conn->prepare("INSERT INTO reserveringen (reserveerVoornaam,reserveerAchternaam,reserveerTelefoon,reserveerEmail,reserveerPersonen,reserveerDatum) 
+        if (empty($reserveerVoornaam) || empty($reserveerAchternaam) || empty($reserveerTelefoon) || empty($reserveerEmail) || empty($reserveerPersonen) || empty($reserveerDatum)) {
+            echo "<p>Er zijn velden niet ingevuld, ga terug naar de pagina. <a href='../../Views/Reserveer/createReservering.php'>Ga terug</a></p>";
+        } else {
+
+            // SQL query: voor invoer in de tabel
+            $sql = $conn->prepare("INSERT INTO reserveringen (reserveerVoornaam,reserveerAchternaam,reserveerTelefoon,reserveerEmail,reserveerPersonen,reserveerDatum) 
     VALUES (:reserveerVoornaam, :reserveerAchternaam, :reserveerTelefoon, :reserveerEmail, :reserveerPersonen, :reserveerDatum)");
 
-        $sql->bindParam(":reserveerVoornaam", $reserveerVoornaam);
-        $sql->bindParam(":reserveerAchternaam", $reserveerAchternaam);
-        $sql->bindParam(":reserveerTelefoon", $reserveerTelefoon);
-        $sql->bindParam(":reserveerEmail", $reserveerEmail);
-        $sql->bindParam(":reserveerPersonen", $reserveerPersonen);
-        $sql->bindParam(":reserveerDatum", $reserveerDatum);
+            $sql->bindParam(":reserveerVoornaam", $reserveerVoornaam);
+            $sql->bindParam(":reserveerAchternaam", $reserveerAchternaam);
+            $sql->bindParam(":reserveerTelefoon", $reserveerTelefoon);
+            $sql->bindParam(":reserveerEmail", $reserveerEmail);
+            $sql->bindParam(":reserveerPersonen", $reserveerPersonen);
+            $sql->bindParam(":reserveerDatum", $reserveerDatum);
 
-        // SQL query: voer de query uit
-        $sql->execute();
+            // SQL query: voer de query uit
+            $sql->execute();
 
-        echo "Uw reservering is verzonden en wordt verwerkt.";
+            echo "<br> Uw reservering is verzonden en wordt verwerkt.";
+            echo "<br><br> Uw informatie: <br>";
+            echo "<br> <p class='font-bold'>Naam</p> " . $this->getReserveerVoornaam() . " " . $this->getReserveerAchternaam();
+            echo "<br><br> <p class='font-bold'>Telefoonnummer</p> " . $this->getReserveerTelefoon();
+            echo "<br><br> <p class='font-bold'>Email</p> " . $this->getReserveerEmail();
+            echo "<br><br> <p class='font-bold'>Aantal</p> personen " . $this->getreserveerPersonen();
+            echo "<br><br> <p class='font-bold'>Datum huifkar-rit</p>" . $this->getReserveerDatum();
+
+            echo "<br><br> <a href='../../Views/home.php'>Ga terug naar de hoofdpagina</a>";
+        }
     }
 
     public function read()
