@@ -104,36 +104,31 @@ class Reserveer
 
     public function read()
     {
-        require "../../Database/database.php";
+        require "../../Database/db.php";
 
-        $sql = $conn->prepare("select * from inkooporders");
+        $sql = $conn->prepare("select * from reserveringen");
 
         $sql->execute();
 
-        foreach ($sql as $inkooporder) {
+        foreach ($sql as $reserveer) {
             echo "<tr>";
-            echo "<td class='border border-black p-2'>" . $inkooporder["inkOrdId"] . "</td>";
-            echo "<td class='border border-black p-2'>" . $inkooporder["levId"] . "</td>";
-            echo "<td class='border border-black p-2'>" . $inkooporder["artId"] . "</td>";
-            echo "<td class='border border-black p-2'>" . $inkooporder["inkOrdDatum"] . "</td>";
-            echo "<td class='border border-black p-2'>" . $inkooporder["inkOrdBestAantal"] . "</td>";
-
-            if ($inkooporder["inkOrdStatus"] === 1) {
-                echo "<td class='border border-black p-2'>" . $inkooporder["inkOrdStatus"];
-                echo "; Onderweg" . "</td>";
-            } elseif ($inkooporder["inkOrdStatus"] === 2) {
-                echo "<td class='border border-black p-2'>" . $inkooporder["inkOrdStatus"];
-                echo "; Bezorgd" . "</td>";
-            }
+            echo "<td class='border border-black p-2'>" . $reserveer["reserveerId"] . "</td>";
+            echo "<td class='border border-black p-2'>" . $reserveer["reserveerVoornaam"] . "</td>";
+            echo "<td class='border border-black p-2'>" . $reserveer["reserveerAchternaam"] . "</td>";
+            echo "<td class='border border-black p-2'>" . $reserveer["reserveerTelefoon"] . "</td>";
+            echo "<td class='border border-black p-2'>" . $reserveer["reserveerEmail"] . "</td>";
+            echo "<td class='border border-black p-2'>" . $reserveer["reserveerPersonen"] . "</td>";
+            echo "<td class='border border-black p-2'>" . $reserveer["reserveerDatum"] . "</td>";
 
             echo "<td class='border border-black'>
-                    <form action='editinkooporder.php' method='post'>
-                        <input type='hidden' name='inkOrdId' value=" . $inkooporder["inkOrdId"] . ">
-                        <input type='hidden' name='levId' value=" . $inkooporder["levId"] . ">
-                        <input type='hidden' name='artId' value=" . $inkooporder["artId"] . ">
-                        <input type='hidden' name='inkOrdDatum' value=" . $inkooporder["inkOrdDatum"] . ">
-                        <input type='hidden' name='inkOrdBestAantal' value=" . $inkooporder["inkOrdBestAantal"] . ">
-                        <input type='hidden' name='inkOrdStatus' value=" . $inkooporder["inkOrdStatus"] . ">
+                    <form action='editReservering.php' method='post'>
+                        <input type='hidden' name='reserveerId' value=" . $reserveer["reserveerId"] . ">
+                        <input type='hidden' name='reserveerVoornaam' value=" . $reserveer["reserveerVoornaam"] . ">
+                        <input type='hidden' name='reserveerAchternaam' value=" . $reserveer["reserveerAchternaam"] . ">
+                        <input type='hidden' name='reserveerTelefoon' value=" . $reserveer["reserveerTelefoon"] . ">
+                        <input type='hidden' name='reserveerEmail' value=" . $reserveer["reserveerEmail"] . ">
+                        <input type='hidden' name='reserveerPersonen' value=" . $reserveer["reserveerPersonen"] . ">
+                        <input type='hidden' name='reserveerDatum' value=" . $reserveer["reserveerDatum"] . ">
                         <input class='p-2' type='submit' value='Edit'>
                     </form>
                 </td>";
