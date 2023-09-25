@@ -10,7 +10,12 @@
 </head>
 <body class="flex min-h-screen justify-between flex-col">
 
-<?php include '../../Components/header.php'; ?>
+<?php include '../../Components/header.php';
+
+require_once '../../Database/db.php';
+
+//$tochten = se
+?>
 
 <main class="py-18 px-64 flex justify-center">
     <form class="w-2/5 bg-gray-300 rounded-lg p-12 m-12  " action="createReserveringController.php" method="post">
@@ -25,11 +30,6 @@
                    class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full">
         </div>
         <div class="mb-5">
-            <label for="telefoonnummer">Telefoonnummer</label>
-            <input type="text" name="telefoonnummer" id="telefoonnummer"
-                   class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full">
-        </div>
-        <div class="mb-5">
             <label for="email">Email</label>
             <input type="text" name="email" id="email"
                    class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full">
@@ -40,7 +40,11 @@
                    class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full">
         </div>
         <div class="mb-5">
-            <label for="datum">Datum rit</label>
+            <label for="tocht">Selecteer een tocht</label>
+<!--            --><?php //foreach () ?>
+        </div>
+        <div class="mb-5">
+            <label for="datum">Startdatum rit</label>
             <input type="date" name="datum" id="datum"
                    class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full">
         </div>
