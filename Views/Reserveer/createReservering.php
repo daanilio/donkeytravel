@@ -10,11 +10,14 @@
 </head>
 <body class="flex min-h-screen justify-between flex-col">
 
-<?php include '../../Components/header.php';
-
+<?php
+include '../../Components/header.php';
 require_once '../../Database/db.php';
 
-//$tochten = se
+require_once '../../Models/Tochten.php';
+use Models\Tochten;
+
+$tochten = new Tochten()
 ?>
 
 <main class="py-18 px-64 flex justify-center">
@@ -40,8 +43,10 @@ require_once '../../Database/db.php';
                    class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full">
         </div>
         <div class="mb-5">
-            <label for="tocht">Selecteer een tocht</label>
-<!--            --><?php //foreach () ?>
+            <label for="tochtSelect">Selecteer een tocht</label><br>
+            <select name="tochten" id="tochtSelect" class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full">
+            <?php $tochten->getAll() ?>
+            </select>
         </div>
         <div class="mb-5">
             <label for="datum">Startdatum rit</label>

@@ -19,7 +19,7 @@ $reserveerVoornaam = $_POST["voornaam"];
 $reserveerAchternaam = $_POST["achternaam"];
 $reserveerEmail = $_POST["email"];
 $reserveerPersonen = $_POST["personen"];
-$reserveerTocht = $_POST["tocht"];
+$reserveerTocht = $_POST["tochten"];
 $reserveerDatum = $_POST["datum"];
 
 $reservering = new Reserveer($reserveerVoornaam, $reserveerAchternaam, $reserveerEmail, $reserveerPersonen, $reserveerTocht, $reserveerDatum);

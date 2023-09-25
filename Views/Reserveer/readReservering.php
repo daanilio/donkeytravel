@@ -28,9 +28,9 @@ $reserveer = new Reserveer();
             <th class="border border-black p-2">Reservering id</th>
             <th class="border border-black p-2">Voornaam</th>
             <th class="border border-black p-2">Achternaam</th>
-            <th class="border border-black p-2">Telefoonnummer</th>
             <th class="border border-black p-2">Email</th>
             <th class="border border-black p-2">Personen</th>
+            <th class="border border-black p-2">Tochtnaam</th>
             <th class="border border-black p-2">Datum</th>
             <th class="border border-black p-2"></th>
         </tr>
