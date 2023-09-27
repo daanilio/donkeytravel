@@ -30,7 +30,7 @@
                    class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Informatie</a>
                 <a href="home.php#overOns" class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Over
                     ons</a>
-                <a href="#" class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Reserveer</a>
+                <a href="Reserveer/createReservering.php" class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Reserveer</a>
             </div>
         </div>
         <div class="flex justify-end uppercase text-sm">
@@ -40,14 +40,14 @@
     </nav>
 </div>
 
-<div class="p-24">
+<div class="p-24" id="overOns">
     <div class="grid grid-cols-4 gap-4 h-36 text-center w-full">
         <div class="col-span-2 mx-auto ">
             <img class="rounded-3xl border-4 border-gray-800" src="../Images/foto_van_ezel.jpg" alt="">
         </div>
         <div class="col-span-2 text-left p-12 rounded-3xl border-4 border-gray-800 bg-green-800 text-white">
             <div>
-                <h1 id="overOns" class="font-bold uppercase text-3xl">Over ons</h1>
+                <h1 class="font-bold uppercase text-3xl">Over ons</h1>
                 <p class="pt-4 text-1xl text-justify">Donkey Travel is een uniek en avontuurlijk bedrijf
                     dat
                     gespecialiseerd is in ezel-huifkar ritjes voor avontuurlijke reizigers zoals jij!

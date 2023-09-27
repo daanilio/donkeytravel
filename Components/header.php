@@ -17,7 +17,7 @@
                    class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Informatie</a>
                 <a href="../home.php#overOns" class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Over
                     ons</a>
-                <a href="#" class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Reserveer</a>
+                <a href="./createReservering.php" class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Reserveer</a>
             </div>
         </div>
         <div class="flex justify-end uppercase text-sm">
