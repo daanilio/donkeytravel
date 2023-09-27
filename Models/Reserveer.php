@@ -50,6 +50,7 @@ class Reserveer
     {
         return $this->reserveerPersonen;
     }
+
     public function getReserveerTocht(): mixed
     {
         return $this->reserveerTocht;
@@ -136,45 +137,58 @@ class Reserveer
         }
     }
 
-    public function update($inkOrdId)
+    public function update($reserveerId)
     {
-        require "../../Database/database.php";
+        require "../../Database/db.php";
 
-        $levId = $this->getlevId();
-        $artId = $this->getArtId();
-        $inkOrdDatum = $this->getinkOrdDatum();
-        $inkOrdBestAantal = $this->getinkOrdBestAantal();
-        $inkOrdStatus = $this->getinkOrdStatus();
+        $reserveerVoornaam = $this->getReserveerVoornaam();
+        $reserveerAchternaam = $this->getReserveerAchternaam();
+        $reserveerEmail = $this->getReserveerEmail();
+        $reserveerPersonen = $this->getreserveerPersonen();
+        $reserveerTocht = $this->getReserveerTocht();
+        $reserveerDatum = $this->getReserveerDatum();
 
         $sql = $conn->prepare
         ("
-            update inkooporders set 
-                               levId = :levId, artId = :artId, inkOrdDatum = :inkOrdDatum, inkOrdBestAantal = :inkOrdBestAantal, inkOrdStatus = :inkOrdStatus
-            WHERE inkOrdId = :inkOrdId
+            update reserveringen set 
+                               reserveerId = :reserveerId, reserveerVoornaam = :reserveerVoornaam, reserveerAchternaam = :reserveerAchternaam, reserveerEmail = :reserveerEmail, reserveerPersonen = :reserveerPersonen, reserveerTocht = :reserveerTocht, reserveerDatum = :reserveerDatum
+            WHERE reserveerId = :reserveerId
             ");
 
         // SQL query: variabelen in de statement zetten
-        $sql->bindParam(":inkOrdId", $inkOrdId);
-        $sql->bindParam(":levId", $levId);
-        $sql->bindParam(":artId", $artId);
-        $sql->bindParam(":inkOrdDatum", $inkOrdDatum);
-        $sql->bindParam(":inkOrdBestAantal", $inkOrdBestAantal);
-        $sql->bindParam(":inkOrdStatus", $inkOrdStatus);
+        $sql->bindParam(":reserveerId", $reserveerId);
+        $sql->bindParam(":reserveerVoornaam", $reserveerVoornaam);
+        $sql->bindParam(":reserveerAchternaam", $reserveerAchternaam);
+        $sql->bindParam(":reserveerEmail", $reserveerEmail);
+        $sql->bindParam(":reserveerPersonen", $reserveerPersonen);
+        $sql->bindParam(":reserveerTocht", $reserveerTocht);
+        $sql->bindParam(":reserveerDatum", $reserveerDatum);
 
         $sql->execute();
 
-        echo "Deze inkooporder is gewijzigd";
+        echo "<p class='text-xl mb-5 text-center'>De reservering is gewijzigd.<br> 
+            <a href='../Reserveer/readReservering.php'>Ga terug.</a></p>";
+
+        echo "<tr>";
+        echo "<td class='border border-black p-2'>" . $reserveerId . "</td>";
+        echo "<td class='border border-black p-2'>" . $reserveerVoornaam . "</td>";
+        echo "<td class='border border-black p-2'>" . $reserveerAchternaam . "</td>";
+        echo "<td class='border border-black p-2'>" . $reserveerEmail . "</td>";
+        echo "<td class='border border-black p-2'>" . $reserveerPersonen . "</td>";
+        echo "<td class='border border-black p-2'>" . $reserveerTocht . "</td>";
+        echo "<td class='border border-black p-2'>" . $reserveerDatum . "</td>";
+        echo "</tr>";
     }
 
-    public function delete($inkOrdId)
+    public function delete($reserveerId)
     {
-        require "../../Database/database.php";
+        require "../../Database/db.php";
 
-        $sql = $conn->prepare("DELETE FROM inkooporders WHERE inkOrdId = :inkOrdId");
-        $sql->bindParam(":inkOrdId", $inkOrdId);
+        $sql = $conn->prepare("DELETE FROM reserveringen WHERE reserveerId = :reserveerId");
+        $sql->bindParam(":reserveerId", $reserveerId);
         $sql->execute();
 
-        echo "Deze inkooporder is verwijderd.";
+        echo "Deze reservering is verwijderd.";
     }
 
 }
