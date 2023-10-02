@@ -70,21 +70,19 @@
     <div class="grid grid-cols-3 px-24 gap-24">
         <div class="z-10 w-full h-56 bg-white text-black border-4 bg-white border-black text-l text-center rounded-xl"
              style="background-color: white">
-            <h3 class="text-2xl pt-2"><span style="padding-bottom: 1px;border-bottom: darkgreen 3px solid">Passie voor dieren</span>
+            <h3 class="text-2xl pt-2"><span style="padding-bottom: 1px;border-bottom: darkgreen 3px solid">Milieuvriendelijk</span>
             </h3>
-            <p class="p-5">Bij Donkey Travel hechten we de grootste waarde aan het welzijn van onze ezels. Ze
-                worden met liefde en zorg behandeld, en we zorgen ervoor dat ze in topconditie zijn om jou een
-                fantastische
-                ervaring te bieden.
+            <p class="p-5">Het bedrijf een goede reputatie opgebouwd op het gebied van milieuvriendelijke en
+                CO2-neutrale vakanties. Zeker door de toenemende vraag naar CO2-neutrale vakanties bleek de vraag naar
+                dit soort reizen groot.
             </p>
         </div>
         <div class="z-10 w-full h-56 bg-white text-black border-4 bg-white border-black text-l text-center rounded-xl"
              style="background-color: white">
             <h3 class="text-2xl pt-2"><span style="padding-bottom: 1px;border-bottom: darkgreen 3px solid">Prachtige locaties</span>
             </h3>
-            <p class="p-5">Onze ezel-huifkar ritjes zijn beschikbaar op enkele van de meest adembenemende locaties in de
-                regio. Of je nu wilt genieten van schilderachtige uitzichten in de bergen of rustige tochten langs de
-                kust, we hebben voor elk wat wils.
+            <p class="p-5">Donkey Travel heeft locaties in Nederland, België en Duitsland. <br> U kunt zelf kiezen wat
+                uw start- en eindlocatie wordt. Hierbij worden eventuelen overnachtingen geregeld.
             </p>
         </div>
         <div class="z-10 w-full h-56 bg-white text-black border-4 bg-white border-black text-l text-center rounded-xl"
