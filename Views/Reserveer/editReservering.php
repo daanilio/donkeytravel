@@ -33,7 +33,8 @@ $tochten = new Tochten();
 
 <main class="py-18 px-64">
     <div class="flex justify-center align-center my-auto">
-        <form class="w-1/2 bg-green-800 rounded-t-lg px-12 pt-12 mt-12 text-black flex flex-col" action="updateReserveringController.php"
+        <form class="w-1/2 bg-green-800 rounded-t-lg px-12 pt-12 mt-12 text-black flex flex-col"
+              action="updateReserveringController.php"
               method="post">
             <div class="mb-5">
                 <label class="text-white" for="id">Reservering id</label>
@@ -86,8 +87,32 @@ $tochten = new Tochten();
     </div>
 
     <div class="flex justify-center align-center my-auto mb-20 bg-green-800 rounded-b-lg w-1/2 mx-auto">
-        <form action="deleteReserveringController.php" method="post" class="w-full mx-12 pb-4">
+        <form action="deleteReserveringBevestiging.php" method="post" class="w-full mx-12 pb-4">
             <input type="hidden" name="reserveerId" id="reserveerId" value="<?php echo $reserveerId ?>">
+            <input type="hidden" name="id" id="id"
+                   class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full" readonly
+                   value="<?php echo $reserveerId ?>">
+            <input type="hidden" name="voornaam" id="voornaam"
+                   class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full"
+                   value="<?php echo $reserveerVoornaam ?>">
+            <input type="hidden" name="achternaam" id="achternaam"
+                   class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full"
+                   value="<?php echo $reserveerAchternaam ?>">
+            <input type="hidden" name="email" id="email"
+                   class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full"
+                   value="<?php echo $reserveerEmail ?>">
+            <input type="hidden" name="personen" id="personen"
+                   class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full"
+                   value="<?php echo $reserveerPersonen ?>">
+            <select hidden name="tochten" id="tochtSelect"
+                    class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full">
+                <option value="<?php echo $reserveerTocht ?>"><?php echo $reserveerTocht ?></option>
+                <?php $tochten->getAll() ?>
+            </select>
+            <input type="hidden" name="datum" id="datum"
+                   class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full"
+                   value="<?php echo $reserveerDatum ?>">
+
             <input type="submit" value="Verwijder reservering"
                    class="p-1 mt-2 bg-red-500 hover:bg-red-600 border border-gray-700 w-full rounded-md text-white">
         </form>

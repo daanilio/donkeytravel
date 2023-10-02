@@ -184,11 +184,27 @@ class Reserveer
     {
         require "../../Database/db.php";
 
+        $reserveerVoornaam = $this->getReserveerVoornaam();
+        $reserveerAchternaam = $this->getReserveerAchternaam();
+        $reserveerEmail = $this->getReserveerEmail();
+        $reserveerPersonen = $this->getreserveerPersonen();
+        $reserveerTocht = $this->getReserveerTocht();
+        $reserveerDatum = $this->getReserveerDatum();
+
         $sql = $conn->prepare("DELETE FROM reserveringen WHERE reserveerId = :reserveerId");
         $sql->bindParam(":reserveerId", $reserveerId);
         $sql->execute();
 
-        echo "Deze reservering is verwijderd.";
+        echo "<tr>";
+        echo "<td class='border border-black p-2'>" . $reserveerId . "</td>";
+        echo "<td class='border border-black p-2'>" . $reserveerVoornaam . "</td>";
+        echo "<td class='border border-black p-2'>" . $reserveerAchternaam . "</td>";
+        echo "<td class='border border-black p-2'>" . $reserveerEmail . "</td>";
+        echo "<td class='border border-black p-2'>" . $reserveerPersonen . "</td>";
+        echo "<td class='border border-black p-2'>" . $reserveerTocht . "</td>";
+        echo "<td class='border border-black p-2'>" . $reserveerDatum . "</td>";
+        echo "</tr>";
+
     }
 
 }
