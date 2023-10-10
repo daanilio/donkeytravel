@@ -105,4 +105,20 @@ class Gebruikers
             echo "</tr>";
         }
     }
+    public function Update($id)
+    {
+        require "../../Database/database.php";
+
+        $naam = $this->getNaam();
+        $email = $this->getEmail();
+
+        $sql = $conn->prepare("update gebruikers set naam = :naam, email = :email where id = :id");
+
+        $sql->bindParam(":id", $id);
+        $sql->bindParam(":naam", $naam);
+        $sql->bindParam(":email", $email);
+        $sql->execute();
+
+        echo "De gebruiker is gewijzigd";
+    }
 }
