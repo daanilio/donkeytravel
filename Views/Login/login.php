@@ -1,52 +1,27 @@
-<?php
-// Danilio Veldhoen
-session_start();
-include "../../Database/loginDatabase.php";
-
-if (isset($_POST['email']) && isset($_POST['wachtwoord'])) {
-    function validate($data) {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-    }
-    $email = $_POST['email'];
-    $wachtwoord = $_POST['wachtwoord'];
-    $wachtwoord = md5($wachtwoord);
-
-    if (empty($email)) {
-        header("Location: ../../index.php?error=Gebruikersnaam niet ingevuld");
-        exit();
-    } else if (empty($wachtwoord)) {
-        header("Location: ../../index.php?error=Wachtwoord niet ingevuld");
-        exit();
-    } else {
-        $sql = "SELECT * FROM gebruikers WHERE email='$email' AND wachtwoord='$wachtwoord'";
-
-        $result = mysqli_query($conn, $sql);
-
-        if (mysqli_num_rows($result)) {
-            $row = mysqli_fetch_assoc($result);
-            if ($row['email'] === $email && $row['wachtwoord'] === $wachtwoord) {
-                $_SESSION['email'] = $row['email'];
-                $_SESSION['naam'] = $row['naam'];
-                $_SESSION['functie'] = $row['functie'];
-                $_SESSION['id'] = $row['id'];
-                header("Location: ../Menu/menu.php");
-                exit();
-            } else {
-                header("Location: index.php?error=Ongeldige email of wachtwoord");
-                exit();
-            }
-        } else {
-            header("Location: index.php?error=Ongeldige email of wachtwoord");
-            exit();
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="">
+    <link rel="shortcut icon" type="image/jpg" href=""/>
+</head>
+<body>
+    <form action="loginController.php" method="post">
+        <?php
+        if (isset($_GET['error'])) {
+            echo "<p class='text-red-500'>" . $_GET['error'] . "</p>";
         }
-    }
+        ?>
 
-} else {
-    header("Location: ../../index.php");
-    exit();
-}
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email">
 
+        <label for="wachtwoord">Wachtwoord</label>
+        <input type="password" name="wachtwoord" id="wachtwoord">
 
+        <a href="registreer.php">Nog geen account? Maak er 1 aan.</a>
+        <input type="submit">
+    </form>
+</body>
+</html>

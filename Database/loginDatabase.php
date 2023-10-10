@@ -6,7 +6,7 @@ $username = "root";
 $password = "";
 
 
-$conn = new mysqli("localhost","root","","bas");
+$conn = new mysqli("localhost","root","","donkeytravel");
 
 // Check connection
 if ($conn -> connect_errno) {

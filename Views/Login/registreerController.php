@@ -15,5 +15,5 @@ $wachtwoord = md5($wachtwoord);
 $gebruiker = new Gebruikers($voornaam, $achternaam, $email, $wachtwoord,);
 $gebruiker->create();
 
-header("refresh:2;url=login.php");
+header("refresh:2;url=loginController.php");
 ?>
