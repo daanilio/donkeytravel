@@ -26,9 +26,9 @@
         <div></div>
         <div class="flex justify-center sm:flex sm:items-center sm:w-auto col-span-2">
             <div class="sm:flex-row text-sm uppercase">
-                <a href="home.php#informatie"
+                <a href="index.php#informatie"
                    class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Informatie</a>
-                <a href="home.php#overOns" class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Over
+                <a href="index.php#overOns" class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Over
                     ons</a>
                 <a href="Reserveer/createReservering.php" class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Reserveer</a>
             </div>

@@ -53,7 +53,7 @@ class Tochten
         echo "<br><br>Tocht informatie: <br>";
         echo "<br> <p class='font-bold'>Locatie van tocht</p> " . $this->getTochtLocatie();
 
-        echo "<br><br> <a href='../../Views/home.php'>Ga terug naar de hoofdpagina</a>";
+        echo "<br><br> <a href='../../Views/index.php'>Ga terug naar de hoofdpagina</a>";
     }
 
 

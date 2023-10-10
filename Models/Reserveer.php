@@ -99,7 +99,7 @@ class Reserveer
             echo "<br><br> <p class='font-bold'>Naam van tocht</p> " . $this->getReserveerTocht();
             echo "<br><br> <p class='font-bold'>Datum huifkar-rit</p>" . $this->getReserveerDatum();
 
-            echo "<br><br> <a href='../../Views/home.php'>Ga terug naar de hoofdpagina</a>";
+            echo "<br><br> <a href='../../Views/index.php'>Ga terug naar de hoofdpagina</a>";
         }
     }
 
