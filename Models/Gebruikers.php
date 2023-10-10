@@ -6,18 +6,19 @@ namespace Models;
 class Gebruikers
 {
     public $id;
-    public $naam;
+    public $voornaam;
+    public $achternaam;
     public $email;
     public $wachtwoord;
 
     /**
-     * @param $naam
+     * @param $voornaam
      * @param $email
      * @param $wachtwoord
      */
-    public function __construct($naam = NULL, $email = NULL, $wachtwoord = NULL)
+    public function __construct($voornaam = NULL, $email = NULL, $wachtwoord = NULL)
     {
-        $this->naam = $naam;
+        $this->voornaam = $voornaam;
         $this->email = $email;
         $this->wachtwoord = $wachtwoord;
     }
@@ -33,9 +34,17 @@ class Gebruikers
     /**
      * @return string
      */
-    public function getNaam()
+    public function getVoornaam()
     {
-        return $this->naam;
+        return $this->voornaam;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAchternaam()
+    {
+        return $this->achternaam;
     }
 
     /**
@@ -60,14 +69,16 @@ class Gebruikers
         require "../../Database/database.php";
 
         $id = NULL;
-        $naam = $this->getNaam();
+        $voornaam = $this->getVoornaam();
+        $achternaam = $this->getAchternaam();
         $email = $this->getEmail();
         $wachtwoord = $this->getWachtwoord();
 
-        $sql = $conn->prepare("insert into gebruikers values(:id, :naam, :email, :wachtwoord)");
+        $sql = $conn->prepare("insert into gebruikers values(:id, :voornaam, :achternaam, :email, :wachtwoord)");
 
         $sql->bindParam(":id", $id);
-        $sql->bindParam(":naam", $naam);
+        $sql->bindParam(":voornaam", $voornaam);
+        $sql->bindParam(":achternaam", $achternaam);
         $sql->bindParam(":email", $email);
         $sql->bindParam(":wachtwoord", $wachtwoord);
 
@@ -92,12 +103,14 @@ class Gebruikers
 
         foreach ($sql as $gebruiker) {
             echo "<tr>";
-            echo "<td class='border border-black'>" . $gebruiker["naam"] . "</td>";
+            echo "<td class='border border-black'>" . $gebruiker["voornaam"] . "</td>";
+            echo "<td class='border border-black'>" . $gebruiker["achternaam"] . "</td>";
             echo "<td class='border border-black'>" . $gebruiker["email"] . "</td>";
             echo "<td class='border border-black'>
                     <form action='#' method='post'>
                         <input type='hidden' name='id' value=" .$gebruiker["id"].">
-                        <input type='hidden' name='naam' value=" .$gebruiker["naam"]. ">
+                        <input type='hidden' name='voornaam' value=" .$gebruiker["voornaam"]. ">
+                        <input type='hidden' name='achternaam' value=" .$gebruiker["achternaam"]. ">
                         <input type='hidden' name='email' value=" .$gebruiker["email"]. ">
                         <input type='submit' value='Edit'>
                     </form>
@@ -110,13 +123,15 @@ class Gebruikers
     {
         require "../../Database/database.php";
 
-        $naam = $this->getNaam();
+        $voornaam = $this->getVoornaam();
+        $achternaam = $this->getAchternaam();
         $email = $this->getEmail();
 
-        $sql = $conn->prepare("update gebruikers set naam = :naam, email = :email where id = :id");
+        $sql = $conn->prepare("update gebruikers set voornaam = :voornaam, achternaam = :achternaam, email = :email where id = :id");
 
         $sql->bindParam(":id", $id);
-        $sql->bindParam(":naam", $naam);
+        $sql->bindParam(":voornaam", $voornaam);
+        $sql->bindParam(":achternaam", $achternaam);
         $sql->bindParam(":email", $email);
         $sql->execute();
 
