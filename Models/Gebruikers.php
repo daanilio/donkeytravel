@@ -13,12 +13,14 @@ class Gebruikers
 
     /**
      * @param $voornaam
+     * @param $achternaam
      * @param $email
      * @param $wachtwoord
      */
-    public function __construct($voornaam = NULL, $email = NULL, $wachtwoord = NULL)
+    public function __construct($voornaam = NULL, $achternaam = NULL, $email = NULL, $wachtwoord = NULL)
     {
         $this->voornaam = $voornaam;
+        $this->achternaam = $achternaam;
         $this->email = $email;
         $this->wachtwoord = $wachtwoord;
     }
