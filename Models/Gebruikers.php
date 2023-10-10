@@ -68,7 +68,7 @@ class Gebruikers
     public function create()
     {
         // Dit zorgt ervoor dat het in de database komt te staan
-        require "../Database/database.php";
+        require "../../Database/database.php";
 
         $id = NULL;
         $voornaam = $this->getVoornaam();
@@ -89,7 +89,7 @@ class Gebruikers
 
         <html lang="en">
         <br>
-        <p class="text-center text-2xl">De gebruiker is toegevoegd.</p>
+        <p class="text-center text-2xl">Uw account is aangemaakt.</p>
         </html>
 
         <?php
