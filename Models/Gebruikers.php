@@ -9,6 +9,7 @@ class Gebruikers
     public $voornaam;
     public $achternaam;
     public $email;
+    public $functie;
     public $wachtwoord;
 
     /**
@@ -60,6 +61,14 @@ class Gebruikers
     /**
      * @return string
      */
+    public function getFunctie()
+    {
+        return $this->functie;
+    }
+
+    /**
+     * @return string
+     */
     public function getWachtwoord()
     {
         return $this->wachtwoord;
@@ -74,14 +83,16 @@ class Gebruikers
         $voornaam = $this->getVoornaam();
         $achternaam = $this->getAchternaam();
         $email = $this->getEmail();
+        $functie = 0;
         $wachtwoord = $this->getWachtwoord();
 
-        $sql = $conn->prepare("insert into gebruikers values(:id, :voornaam, :achternaam, :email, :wachtwoord)");
+        $sql = $conn->prepare("insert into gebruikers values(:id, :voornaam, :achternaam, :email, :functie, :wachtwoord)");
 
         $sql->bindParam(":id", $id);
         $sql->bindParam(":voornaam", $voornaam);
         $sql->bindParam(":achternaam", $achternaam);
         $sql->bindParam(":email", $email);
+        $sql->bindParam(":functie", $functie);
         $sql->bindParam(":wachtwoord", $wachtwoord);
 
         $sql->execute();
@@ -108,12 +119,14 @@ class Gebruikers
             echo "<td class='border border-black'>" . $gebruiker["voornaam"] . "</td>";
             echo "<td class='border border-black'>" . $gebruiker["achternaam"] . "</td>";
             echo "<td class='border border-black'>" . $gebruiker["email"] . "</td>";
+            echo "<td class='border border-black'>" . $gebruiker["functie"] . "</td>";
             echo "<td class='border border-black'>
                     <form action='#' method='post'>
                         <input type='hidden' name='id' value=" .$gebruiker["id"].">
                         <input type='hidden' name='voornaam' value=" .$gebruiker["voornaam"]. ">
                         <input type='hidden' name='achternaam' value=" .$gebruiker["achternaam"]. ">
                         <input type='hidden' name='email' value=" .$gebruiker["email"]. ">
+                        <input type='hidden' name='functie' value=" .$gebruiker["functie"]. ">
                         <input type='submit' value='Edit'>
                     </form>
                 </td>";
@@ -122,6 +135,27 @@ class Gebruikers
     }
 
     public function Update($id)
+    {
+        require "../../Database/database.php";
+
+        $voornaam = $this->getVoornaam();
+        $achternaam = $this->getAchternaam();
+        $email = $this->getEmail();
+        $functie = $this->getFunctie();
+
+        $sql = $conn->prepare("update gebruikers set voornaam = :voornaam, achternaam = :achternaam, email = :email, functie = :functie where id = :id");
+
+        $sql->bindParam(":id", $id);
+        $sql->bindParam(":voornaam", $voornaam);
+        $sql->bindParam(":achternaam", $achternaam);
+        $sql->bindParam(":email", $email);
+        $sql->bindParam(":functie", $functie);
+        $sql->execute();
+
+        echo "De gebruiker is gewijzigd";
+    }
+
+    public function UpdateProfile($id)
     {
         require "../../Database/database.php";
 
