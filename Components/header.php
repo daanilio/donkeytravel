@@ -8,7 +8,7 @@
     <nav class="sticky top-0 w-full py-4 px-2 border-x-4 border-green-800 border-b-4 bg-gray-800 grid grid-cols-4">
         <div class="flex">
             <p class="font-bold text-white uppercase text-xl bg-green-800 px-3 py-1">
-                <a href="../../Views/home.php">Donkey travel</a>
+                <a href="../../Views/index.php">Donkey travel</a>
             </p>
         </div>
         <div class="flex justify-center sm:flex sm:items-center sm:w-auto col-span-2">
