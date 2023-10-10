@@ -54,7 +54,6 @@ class Gebruikers
         return $this->wachtwoord;
     }
 
-
     public function create()
     {
         // Dit zorgt ervoor dat het in de database komt te staan
@@ -82,6 +81,7 @@ class Gebruikers
 
         <?php
     }
+
     public function read()
     {
         require "../../Database/database.php";
@@ -105,6 +105,7 @@ class Gebruikers
             echo "</tr>";
         }
     }
+
     public function Update($id)
     {
         require "../../Database/database.php";
@@ -120,5 +121,16 @@ class Gebruikers
         $sql->execute();
 
         echo "De gebruiker is gewijzigd";
+    }
+
+    public function Delete($id)
+    {
+        require "../../Database/database.php";
+
+        $sql = $conn->prepare("delete from gebruikers where id = :id");
+        $sql->bindParam(":id", $id);
+        $sql->execute();
+
+        echo "De gebruiker is verwijderd.";
     }
 }
