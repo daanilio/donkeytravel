@@ -22,7 +22,7 @@ class Tochten
 
     public function getAll() {
 
-        require "../../Database/db.php";
+        require "../../Database/database.php";
 
         $sql = $conn->prepare("SELECT `tochtLocatie` FROM `donkeytravel`.`tochten`");
 
@@ -36,7 +36,7 @@ class Tochten
 
     public function create()
     {
-        require "../../Database/db.php";
+        require "../../Database/database.php";
 
         $tochtLocatie = $this->getTochtLocatie();
 
@@ -59,7 +59,7 @@ class Tochten
 
     public function read()
     {
-        require "../../Database/db.php";
+        require "../../Database/database.php";
 
         $sql = $conn->prepare("select * from tochten");
 
