@@ -12,7 +12,7 @@
 
 <?php
 include '../../Components/header.php';
-require_once '../../Database/db.php';
+require_once '../../Database/database.php';
 
 require '../../Models/Reserveer.php';
 

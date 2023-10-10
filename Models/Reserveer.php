@@ -64,7 +64,7 @@ class Reserveer
 
     public function create()
     {
-        require "../../Database/db.php";
+        require "../../Database/database.php";
 
         $reserveerVoornaam = $this->getReserveerVoornaam();
         $reserveerAchternaam = $this->getReserveerAchternaam();
@@ -105,7 +105,7 @@ class Reserveer
 
     public function read()
     {
-        require "../../Database/db.php";
+        require "../../Database/database.php";
 
         $sql = $conn->prepare("select * from reserveringen");
 
@@ -139,7 +139,7 @@ class Reserveer
 
     public function update($reserveerId)
     {
-        require "../../Database/db.php";
+        require "../../Database/database.php";
 
         $reserveerVoornaam = $this->getReserveerVoornaam();
         $reserveerAchternaam = $this->getReserveerAchternaam();
@@ -182,7 +182,7 @@ class Reserveer
 
     public function delete($reserveerId)
     {
-        require "../../Database/db.php";
+        require "../../Database/database.php";
 
         $reserveerVoornaam = $this->getReserveerVoornaam();
         $reserveerAchternaam = $this->getReserveerAchternaam();

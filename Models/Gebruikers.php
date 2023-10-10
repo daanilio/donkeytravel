@@ -68,7 +68,7 @@ class Gebruikers
     public function create()
     {
         // Dit zorgt ervoor dat het in de database komt te staan
-        require "../../Database/database.php";
+        require "../Database/database.php";
 
         $id = NULL;
         $voornaam = $this->getVoornaam();
