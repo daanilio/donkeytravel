@@ -82,4 +82,27 @@ class Gebruikers
 
         <?php
     }
+    public function read()
+    {
+        require "../../Database/database.php";
+
+        $sql = $conn->prepare("select * from gebruikers");
+
+        $sql->execute();
+
+        foreach ($sql as $gebruiker) {
+            echo "<tr>";
+            echo "<td class='border border-black'>" . $gebruiker["naam"] . "</td>";
+            echo "<td class='border border-black'>" . $gebruiker["email"] . "</td>";
+            echo "<td class='border border-black'>
+                    <form action='#' method='post'>
+                        <input type='hidden' name='id' value=" .$gebruiker["id"].">
+                        <input type='hidden' name='naam' value=" .$gebruiker["naam"]. ">
+                        <input type='hidden' name='email' value=" .$gebruiker["email"]. ">
+                        <input type='submit' value='Edit'>
+                    </form>
+                </td>";
+            echo "</tr>";
+        }
+    }
 }
