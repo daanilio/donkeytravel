@@ -32,6 +32,7 @@ $reserveer = new Reserveer();
             <th class="border border-black p-2">Personen</th>
             <th class="border border-black p-2">Tochtnaam</th>
             <th class="border border-black p-2">Datum</th>
+            <th class="border border-black p-2">Status</th>
             <th class="border border-black p-2"></th>
         </tr>
         <?php $reserveer->read(); ?>

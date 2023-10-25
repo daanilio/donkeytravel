@@ -121,6 +121,13 @@ class Reserveer
             echo "<td class='border border-black p-2'>" . $reserveer["reserveerTocht"] . "</td>";
             echo "<td class='border border-black p-2'>" . $reserveer["reserveerDatum"] . "</td>";
 
+            echo "<td class='border border-black p-2'>" . $reserveer["reserveerStatus"];
+            if ($reserveer["reserveerStatus"] == '1') {
+                echo ": Aangevraagd";
+            } elseif ($reserveer["reserveerStatus"] == '2') {
+                echo ":Defenitief";
+            } "</td>";
+
             echo "<td class='border border-black'>
                     <form action='editReservering.php' method='post'>
                         <input type='hidden' name='reserveerId' value=" . $reserveer["reserveerId"] . ">
@@ -130,6 +137,7 @@ class Reserveer
                         <input type='hidden' name='reserveerPersonen' value=" . $reserveer["reserveerPersonen"] . ">
                         <input type='hidden' name='reserveerTocht' value=" . $reserveer["reserveerTocht"] . ">
                         <input type='hidden' name='reserveerDatum' value=" . $reserveer["reserveerDatum"] . ">
+                        <input type='hidden' name='reserveerStatus' value=" . $reserveer["reserveerStatus"] . ">
                         <input class='p-2' type='submit' value='Edit'>
                     </form>
                 </td>";
