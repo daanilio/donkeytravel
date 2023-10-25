@@ -1,15 +1,4 @@
 <!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Update</title>
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-</head>
-<body class="flex min-h-screen justify-between flex-col">
-
 <?php
 include '../../Components/header.php';
 require_once '../../Database/db.php';
@@ -23,6 +12,7 @@ $reserveerEmail = $_POST["reserveerEmail"];
 $reserveerTocht = $_POST["reserveerTocht"];
 $reserveerPersonen = $_POST["reserveerPersonen"];
 $reserveerDatum = $_POST["reserveerDatum"];
+$reserveerStatus = $_POST["reserveerStatus"];
 
 require_once '../../Models/Tochten.php';
 
@@ -30,6 +20,17 @@ use Models\Tochten;
 
 $tochten = new Tochten();
 ?>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Update</title>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="flex min-h-screen justify-between flex-col">
+
 
 <main class="py-18 px-64">
     <div class="flex justify-center align-center my-auto">
@@ -81,6 +82,27 @@ $tochten = new Tochten();
                        class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full"
                        value="<?php echo $reserveerDatum ?>">
             </div>
+            <div class="mb-5">
+                <label class="text-white" for="reserveerStatus">Status reservering</label><br>
+                <select name="status" id="reserveerStatus"
+                        class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full">
+                    <?php if ($reserveerStatus == 1) { ?>
+                        <option selected value="1">1: aangevraagd</option>
+                        <option value="2">2: defenitief</option>
+                        <option value="3">3: afgekeurd</option>
+
+                    <?php } elseif ($reserveerStatus == 2) { ?>
+                        <option disabled value="1">1: aangevraagd</option>
+                        <option selected value="2">2: defenitief</option>
+                        <option value="3">3: afgekeurd</option>
+                    <?php } else { ?>
+                        <option disabled value="1">1: aangevraagd</option>
+                        <option disabled value="2">2: defenitief</option>
+                        <option selected value="3">3: afgekeurd</option>
+                    <?php } ?>
+                </select>
+            </div>
+
             <input type="submit" name="verzenden" id="button" value="Updaten"
                    class="p-1 bg-green-200 hover:bg-green-400 border border-gray-700 w-full rounded-md">
         </form>
@@ -112,6 +134,9 @@ $tochten = new Tochten();
             <input type="hidden" name="datum" id="datum"
                    class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full"
                    value="<?php echo $reserveerDatum ?>">
+            <input type="hidden" name="status" id="status"
+                   class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full"
+                   value="<?php echo $reserveerStatus ?> ">
 
             <input type="submit" value="Verwijder reservering"
                    class="p-1 mt-2 bg-red-500 hover:bg-red-600 border border-gray-700 w-full rounded-md text-white">

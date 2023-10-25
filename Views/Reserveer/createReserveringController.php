@@ -21,8 +21,9 @@ $reserveerEmail = $_POST["email"];
 $reserveerPersonen = $_POST["personen"];
 $reserveerTocht = $_POST["tochten"];
 $reserveerDatum = $_POST["datum"];
+$reserveerStatus = 1;
 
-$reservering = new Reserveer($reserveerVoornaam, $reserveerAchternaam, $reserveerEmail, $reserveerPersonen, $reserveerTocht, $reserveerDatum);
+$reservering = new Reserveer($reserveerVoornaam, $reserveerAchternaam, $reserveerEmail, $reserveerPersonen, $reserveerTocht, $reserveerDatum, $reserveerStatus);
 $reservering->create();
 ?>
 

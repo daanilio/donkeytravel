@@ -23,6 +23,7 @@ $reserveerEmail = $_POST["email"];
 $reserveerTocht = $_POST["tochten"];
 $reserveerPersonen = $_POST["personen"];
 $reserveerDatum = $_POST["datum"];
+$reserveerStatus = $_POST["status"];
 
 require_once '../../Models/Tochten.php';
 
@@ -80,9 +81,15 @@ $tochten = new Tochten();
                        class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full" readonly
                        value="<?php echo $reserveerDatum ?>">
             </div>
+            <div class="mb-5">
+                <label class="text-white" for="status">Status reservering</label>
+                <input type="text" name="status" id="status"
+                       class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full" readonly
+                       value="<?php echo $reserveerStatus ?>">
+            </div>
             <div class="flex flex-col">
-                <label class="text-white text-center" for="bevestiging">Weet u zeker dat u deze reservering wilt
-                    verwijderen?</label>
+                <label class="text-white text-center" for="bevestiging">
+                    Weet u zeker dat u deze reservering wilt verwijderen?</label>
             </div>
             <input type="submit" value="Verwijder reservering"
                    class="p-1 mt-2 bg-red-500 hover:bg-red-600 border border-gray-700 w-full rounded-md text-white">
