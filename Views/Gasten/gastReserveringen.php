@@ -1,11 +1,17 @@
 <?php
 
+require "../../Database/db.php";
 require_once '../../Models/Reserveer.php';
 
 use Models\Reserveer;
 
 $reserveer = new Reserveer();
 $id = 4;
+
+$sql = $conn->prepare("select * from reserveringen WHERE reserveerId = $id");
+$sql->execute();
+
+$rowCount = $sql->rowCount();
 ?>
 
 <!doctype html>
@@ -23,6 +29,11 @@ $id = 4;
 <?php include '../../Components/header.php'; ?>
 
 <main class="py-18 px-64 flex justify-center">
+    <?php
+    if ($rowCount <= 0) {
+        echo "U heeft momenteel geen reserveringen.<a href='../Reserveer/createReservering.php'>Reserveer hier</a>";
+    } else {
+        echo '
     <table class="table-fixed border border-black border-collape">
         <tr class="border border-black">
             <th class="border border-black p-2">Reservering id</th>
@@ -34,9 +45,11 @@ $id = 4;
             <th class="border border-black p-2">Datum</th>
             <th class="border border-black p-2">Status</th>
             <th class="border border-black p-2">Wijzig/Verwijder</th>
-        </tr>
-        <?php $reserveer->readReserveringGast($id); ?>
-    </table>
+        </tr>';
+        $reserveer->readReserveringGast($id);
+        echo '</table>';
+    }
+    ?>
 </main>
 
 <?php include '../../Components/footer.php'; ?>
