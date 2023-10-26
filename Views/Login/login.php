@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if (isset($_SESSION['id']) && $_SESSION['email']) {
+    header("Location: ../index.php");
+} else {
+
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,3 +33,5 @@
     </form>
 </body>
 </html>
+<?php
+}
