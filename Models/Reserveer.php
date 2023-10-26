@@ -197,7 +197,7 @@ class Reserveer
 
 
             echo "<td class='border border-black'>
-                    <form action='editReservering.php' method='post'>
+                    <form action='gastEditReservering.php' method='post'>
                         <input type='hidden' name='reserveerId' value=" . $reserveer["reserveerId"] . ">
                         <input type='hidden' name='reserveerVoornaam' value=" . $reserveer["reserveerVoornaam"] . ">
                         <input type='hidden' name='reserveerAchternaam' value=" . $reserveer["reserveerAchternaam"] . ">
@@ -209,7 +209,7 @@ class Reserveer
 
 //            Deze functie checked of de gast zijn reserverering kan wijzigen
             if ($reserveer["reserveerDatum"] > date("Y-m-d") && ($reserveer["reserveerStatus"] == 1)) {
-                echo "<input class='p-2 w-full' type='submit' value='Wijzigen'>";
+                echo "<input class='p-2 w-full cursor-pointer' type='submit' value='Wijzigen'>";
             } else {
                 echo "<p class='text-center'>Niet mogelijk</p>";
             }
@@ -253,6 +253,64 @@ class Reserveer
 
         echo "<p class='text-xl mb-5 text-center'>De reservering is gewijzigd.<br> 
             <a href='../Reserveer/readReservering.php'>Ga terug.</a></p>";
+
+        echo "<tr>";
+        echo "<td class='border border-black p-2'>" . $reserveerId . "</td>";
+        echo "<td class='border border-black p-2'>" . $reserveerVoornaam . "</td>";
+        echo "<td class='border border-black p-2'>" . $reserveerAchternaam . "</td>";
+        echo "<td class='border border-black p-2'>" . $reserveerEmail . "</td>";
+        echo "<td class='border border-black p-2'>" . $reserveerPersonen . "</td>";
+        echo "<td class='border border-black p-2'>" . $reserveerTocht . "</td>";
+        echo "<td class='border border-black p-2'>" . $reserveerDatum . "</td>";
+        if ($reserveerStatus == 1) {
+            echo "<td class='border border-black p-2'>" . $reserveerStatus;
+            echo ": aangevraagd";
+            "</td>";
+        } elseif ($reserveerStatus == 2) {
+            echo "<td class='border border-black p-2'>" . $reserveerStatus;
+            echo ": defenitief";
+            "</td>";
+        } else {
+            echo "<td class='border border-black p-2'>" . $reserveerStatus;
+            echo ": afgekeurd";
+            "</td>";
+        }
+        echo "</tr>";
+    }
+
+    public function updateReserveringGast($reserveerId)
+    {
+        require "../../Database/db.php";
+
+        $reserveerVoornaam = $this->getReserveerVoornaam();
+        $reserveerAchternaam = $this->getReserveerAchternaam();
+        $reserveerEmail = $this->getReserveerEmail();
+        $reserveerPersonen = $this->getreserveerPersonen();
+        $reserveerTocht = $this->getReserveerTocht();
+        $reserveerDatum = $this->getReserveerDatum();
+        $reserveerStatus = $this->getReserveerStatus();
+
+        $sql = $conn->prepare
+        ("
+            update reserveringen set 
+                               reserveerId = :reserveerId, reserveerVoornaam = :reserveerVoornaam, reserveerAchternaam = :reserveerAchternaam, reserveerEmail = :reserveerEmail, reserveerPersonen = :reserveerPersonen, reserveerTocht = :reserveerTocht, reserveerDatum = :reserveerDatum, reserveerStatus = :reserveerStatus
+            WHERE reserveerId = :reserveerId
+            ");
+
+        // SQL query: variabelen in de statement zetten
+        $sql->bindParam(":reserveerId", $reserveerId);
+        $sql->bindParam(":reserveerVoornaam", $reserveerVoornaam);
+        $sql->bindParam(":reserveerAchternaam", $reserveerAchternaam);
+        $sql->bindParam(":reserveerEmail", $reserveerEmail);
+        $sql->bindParam(":reserveerPersonen", $reserveerPersonen);
+        $sql->bindParam(":reserveerTocht", $reserveerTocht);
+        $sql->bindParam(":reserveerDatum", $reserveerDatum);
+        $sql->bindParam(":reserveerStatus", $reserveerStatus);
+
+        $sql->execute();
+
+        echo "<p class='text-xl mb-5 text-center'>De reservering is gewijzigd.<br>";
+        header("refresh:2;url=gastReserveringen.php");
 
         echo "<tr>";
         echo "<td class='border border-black p-2'>" . $reserveerId . "</td>";
