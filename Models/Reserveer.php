@@ -11,6 +11,7 @@ class Reserveer
     public $reserveerPersonen;
     public $reserveerTocht;
     public $reserveerDatum;
+    public $reserveerStatus;
 
     /**
      * @param $reserveerVoornaam
@@ -19,8 +20,9 @@ class Reserveer
      * @param $reserveerPersonen
      * @param $reserveerTocht
      * @param $reserveerDatum
+     * @param $reserveerStatus
      */
-    public function __construct($reserveerVoornaam = NULL, $reserveerAchternaam = NULL, $reserveerEmail = NULL, $reserveerPersonen = NULL, $reserveerTocht = NULL, $reserveerDatum = NULL)
+    public function __construct($reserveerVoornaam = NULL, $reserveerAchternaam = NULL, $reserveerEmail = NULL, $reserveerPersonen = NULL, $reserveerTocht = NULL, $reserveerDatum = NULL, $reserveerStatus = NULL)
     {
         $this->reserveerVoornaam = $reserveerVoornaam;
         $this->reserveerAchternaam = $reserveerAchternaam;
@@ -28,6 +30,7 @@ class Reserveer
         $this->reserveerPersonen = $reserveerPersonen;
         $this->reserveerTocht = $reserveerTocht;
         $this->reserveerDatum = $reserveerDatum;
+        $this->reserveerStatus = $reserveerStatus;
     }
 
     public function getReserveerVoornaam(): mixed
@@ -59,6 +62,10 @@ class Reserveer
     public function getReserveerDatum(): mixed
     {
         return $this->reserveerDatum;
+    }
+    public function getReserveerStatus(): mixed
+    {
+        return $this->reserveerStatus;
     }
 
 
@@ -121,6 +128,15 @@ class Reserveer
             echo "<td class='border border-black p-2'>" . $reserveer["reserveerTocht"] . "</td>";
             echo "<td class='border border-black p-2'>" . $reserveer["reserveerDatum"] . "</td>";
 
+            echo "<td class='border border-black p-2'>" . $reserveer["reserveerStatus"];
+            if ($reserveer["reserveerStatus"] == 1) {
+                echo ": aangevraagd";
+            } elseif ($reserveer["reserveerStatus"] == 2) {
+                echo ": defenitief";
+            } else {
+                echo ": afgekeurd";
+            } "</td>";
+
             echo "<td class='border border-black'>
                     <form action='editReservering.php' method='post'>
                         <input type='hidden' name='reserveerId' value=" . $reserveer["reserveerId"] . ">
@@ -130,6 +146,7 @@ class Reserveer
                         <input type='hidden' name='reserveerPersonen' value=" . $reserveer["reserveerPersonen"] . ">
                         <input type='hidden' name='reserveerTocht' value=" . $reserveer["reserveerTocht"] . ">
                         <input type='hidden' name='reserveerDatum' value=" . $reserveer["reserveerDatum"] . ">
+                        <input type='hidden' name='reserveerStatus' value=" . $reserveer["reserveerStatus"] . ">
                         <input class='p-2' type='submit' value='Edit'>
                     </form>
                 </td>";
@@ -147,11 +164,12 @@ class Reserveer
         $reserveerPersonen = $this->getreserveerPersonen();
         $reserveerTocht = $this->getReserveerTocht();
         $reserveerDatum = $this->getReserveerDatum();
+        $reserveerStatus = $this->getReserveerStatus();
 
         $sql = $conn->prepare
         ("
             update reserveringen set 
-                               reserveerId = :reserveerId, reserveerVoornaam = :reserveerVoornaam, reserveerAchternaam = :reserveerAchternaam, reserveerEmail = :reserveerEmail, reserveerPersonen = :reserveerPersonen, reserveerTocht = :reserveerTocht, reserveerDatum = :reserveerDatum
+                               reserveerId = :reserveerId, reserveerVoornaam = :reserveerVoornaam, reserveerAchternaam = :reserveerAchternaam, reserveerEmail = :reserveerEmail, reserveerPersonen = :reserveerPersonen, reserveerTocht = :reserveerTocht, reserveerDatum = :reserveerDatum, reserveerStatus = :reserveerStatus
             WHERE reserveerId = :reserveerId
             ");
 
@@ -163,6 +181,7 @@ class Reserveer
         $sql->bindParam(":reserveerPersonen", $reserveerPersonen);
         $sql->bindParam(":reserveerTocht", $reserveerTocht);
         $sql->bindParam(":reserveerDatum", $reserveerDatum);
+        $sql->bindParam(":reserveerStatus", $reserveerStatus);
 
         $sql->execute();
 
@@ -177,6 +196,13 @@ class Reserveer
         echo "<td class='border border-black p-2'>" . $reserveerPersonen . "</td>";
         echo "<td class='border border-black p-2'>" . $reserveerTocht . "</td>";
         echo "<td class='border border-black p-2'>" . $reserveerDatum . "</td>";
+        if ($reserveerStatus == 1) {
+            echo "<td class='border border-black p-2'>" . $reserveerStatus; echo  ": aangevraagd"; "</td>";
+        } elseif ($reserveerStatus == 2) {
+            echo "<td class='border border-black p-2'>" . $reserveerStatus; echo  ": defenitief"; "</td>";
+        } else {
+            echo "<td class='border border-black p-2'>" . $reserveerStatus; echo  ": afgekeurd"; "</td>";
+        }
         echo "</tr>";
     }
 
@@ -190,6 +216,7 @@ class Reserveer
         $reserveerPersonen = $this->getreserveerPersonen();
         $reserveerTocht = $this->getReserveerTocht();
         $reserveerDatum = $this->getReserveerDatum();
+        $reserveerStatus = $this->getReserveerStatus();
 
         $sql = $conn->prepare("DELETE FROM reserveringen WHERE reserveerId = :reserveerId");
         $sql->bindParam(":reserveerId", $reserveerId);
@@ -203,6 +230,7 @@ class Reserveer
         echo "<td class='border border-black p-2'>" . $reserveerPersonen . "</td>";
         echo "<td class='border border-black p-2'>" . $reserveerTocht . "</td>";
         echo "<td class='border border-black p-2'>" . $reserveerDatum . "</td>";
+        echo "<td class='border border-black p-2'>" . $reserveerStatus . "</td>";
         echo "</tr>";
 
     }
