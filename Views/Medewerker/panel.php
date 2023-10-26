@@ -1,3 +1,10 @@
+<?php
+// Checks if you're logged in and if you have the right permissions.
+session_start();
+
+if (isset($_SESSION['id']) && $_SESSION['email']) {
+    if ($_SESSION['functie'] === 1); {
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -45,5 +52,7 @@
 
 </body>
 </html>
-
+<?php
+    }
+}
 

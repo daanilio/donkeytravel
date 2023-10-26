@@ -119,9 +119,13 @@ class Gebruikers
             echo "<td class='border border-black'>" . $gebruiker["voornaam"] . "</td>";
             echo "<td class='border border-black'>" . $gebruiker["achternaam"] . "</td>";
             echo "<td class='border border-black'>" . $gebruiker["email"] . "</td>";
-            echo "<td class='border border-black'>" . $gebruiker["functie"] . "</td>";
+            if ($gebruiker["functie"] === 1) {
+                echo "<td class='border border-black'>Medewerker</td>";
+            } elseif ($gebruiker["functie"] === 0) {
+                echo "<td class='border border-black'>Klant</td>";
+            }
             echo "<td class='border border-black'>
-                    <form action='#' method='post'>
+                    <form action='../Gebruiker/editGebruiker.php' method='post'>
                         <input type='hidden' name='id' value=" .$gebruiker["id"].">
                         <input type='hidden' name='voornaam' value=" .$gebruiker["voornaam"]. ">
                         <input type='hidden' name='achternaam' value=" .$gebruiker["achternaam"]. ">
