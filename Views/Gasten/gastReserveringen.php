@@ -6,7 +6,7 @@ require_once '../../Models/Reserveer.php';
 use Models\Reserveer;
 
 $reserveer = new Reserveer();
-$id = 4;
+$id = 9;
 
 $sql = $conn->prepare("select * from reserveringen WHERE reserveerId = $id");
 $sql->execute();
