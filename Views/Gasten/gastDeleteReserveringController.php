@@ -42,10 +42,11 @@ $reservering = new Reserveer($reserveerVoornaam, $reserveerAchternaam, $reservee
                 <th class="border border-black p-2">Datum</th>
                 <th class="border border-black p-2">Status</th>
             </tr>
-            <?php $reservering->delete($reserveerId); ?>
+            <?php $reservering->deleteReserveringGast($reserveerId); ?>
         </table>
         <br><br>
-        <p class="text-center"><a  href='../../Views/home.php'>Ga terug naar de hoofdpagina</a></p>
+        <p class="text-center">U wordt automatisch teruggestuurd.</p>
+        <?php header("refresh:4;url=gastReserveringen.php"); ?>
     </div>
 </main>
 <?php include '../../Components/footer.php'; ?>

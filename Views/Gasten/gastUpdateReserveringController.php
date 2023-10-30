@@ -5,9 +5,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Reservering verwijderd</title>
+    <title>Update</title>
 </head>
-
 <?php
 
 require_once '../../Models/Reserveer.php';
@@ -30,7 +29,6 @@ $reservering = new Reserveer($reserveerVoornaam, $reserveerAchternaam, $reservee
 <?php include '../../Components/header.php'; ?>
 <main class="py-18 px-64 flex justify-center">
     <div class="">
-        <h2 class="text-center mb-8">Deze reservering is verwijderd:<br></h2>
         <table class="table-fixed border border-black border-collape">
             <tr class="border border-black">
                 <th class="border border-black p-2">Reservering id</th>
@@ -42,10 +40,8 @@ $reservering = new Reserveer($reserveerVoornaam, $reserveerAchternaam, $reservee
                 <th class="border border-black p-2">Datum</th>
                 <th class="border border-black p-2">Status</th>
             </tr>
-            <?php $reservering->delete($reserveerId); ?>
+            <?php $reservering->updateReserveringGast($reserveerId); ?>
         </table>
-        <br><br>
-        <p class="text-center"><a  href='../../Views/home.php'>Ga terug naar de hoofdpagina</a></p>
     </div>
 </main>
 <?php include '../../Components/footer.php'; ?>

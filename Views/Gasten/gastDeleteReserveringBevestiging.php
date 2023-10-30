@@ -35,7 +35,7 @@ $tochten = new Tochten();
 <main class="py-18 px-64">
     <div class="flex justify-center align-center my-auto">
         <form class="w-1/2 bg-green-800 rounded-lg px-12 py-12 mt-12 text-black flex flex-col mb-10"
-              action="deleteReserveringController.php"
+              action="gastDeleteReserveringController.php"
               method="post">
             <div class="mb-5">
                 <label class="text-white" for="id">Reservering id</label>
@@ -81,7 +81,7 @@ $tochten = new Tochten();
                        class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full" readonly
                        value="<?php echo $reserveerDatum ?>">
             </div>
-            <div class="mb-5">
+            <div class="mb-5 hidden">
                 <label class="text-white" for="status">Status reservering</label>
                 <input type="text" name="status" id="status"
                        class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full" readonly
@@ -91,7 +91,7 @@ $tochten = new Tochten();
                 <label class="text-white text-center" for="bevestiging">
                     Weet u zeker dat u deze reservering wilt verwijderen?</label>
             </div>
-            <input type="submit" value="Verwijder reservering"
+            <input type="submit" value="Ja, verwijder reservering"
                    class="p-1 mt-2 bg-red-500 hover:bg-red-600 border border-gray-700 w-full rounded-md text-white">
         </form>
     </div>
