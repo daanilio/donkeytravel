@@ -63,6 +63,7 @@ class Reserveer
     {
         return $this->reserveerDatum;
     }
+
     public function getReserveerStatus(): mixed
     {
         return $this->reserveerStatus;
@@ -135,7 +136,8 @@ class Reserveer
                 echo ": defenitief";
             } else {
                 echo ": afgekeurd";
-            } "</td>";
+            }
+            "</td>";
 
             echo "<td class='border border-black'>
                     <form action='editReservering.php' method='post'>
@@ -149,6 +151,70 @@ class Reserveer
                         <input type='hidden' name='reserveerStatus' value=" . $reserveer["reserveerStatus"] . ">
                         <input class='p-2' type='submit' value='Edit'>
                     </form>
+                </td>";
+            echo "</tr>";
+        }
+    }
+
+    public function readReserveringGast($id)
+    {
+        require "../../Database/db.php";
+
+        $sql = $conn->prepare("select * from reserveringen WHERE reserveerId = $id");
+
+        $sql->execute();
+
+        foreach ($sql as $reserveer) {
+            echo "<tr>";
+            echo "<td class='border border-black p-2'>" . $reserveer["reserveerId"] . "</td>";
+            echo "<td class='border border-black p-2'>" . $reserveer["reserveerVoornaam"] . "</td>";
+            echo "<td class='border border-black p-2'>" . $reserveer["reserveerAchternaam"] . "</td>";
+            echo "<td class='border border-black p-2'>" . $reserveer["reserveerEmail"] . "</td>";
+            echo "<td class='border border-black p-2'>" . $reserveer["reserveerPersonen"] . "</td>";
+            echo "<td class='border border-black p-2'>" . $reserveer["reserveerTocht"] . "</td>";
+
+            $date = $reserveer["reserveerDatum"];
+
+//            Deze statement veranderd de kleur van de text aan de hand van de status
+            if ($date == date("Y-m-d")) {
+                echo "<td class='border border-black p-2 text-green-500'>" . $reserveer["reserveerDatum"] . ": Actief</td>";
+            } elseif ($date > date("Y-m-d")) {
+                echo "<td class='border border-black p-2 text-black-500'>" . $reserveer["reserveerDatum"] . ": Gepland</td>";
+            } elseif ($date < date("Y-m-d")) {
+                echo "<td class='border border-black p-2 text-red-500'>" . $reserveer["reserveerDatum"] . ": Verlopen</td>";
+            }
+
+//            Deze statement zorgt ervoor dat de status wordt weergegeven
+            echo "<td class='border border-black p-2'>" . $reserveer["reserveerStatus"];
+            if ($reserveer["reserveerStatus"] == 1) {
+                echo ": aangevraagd";
+            } elseif ($reserveer["reserveerStatus"] == 2) {
+                echo ": defenitief";
+            } else {
+                echo ": afgekeurd";
+            }
+            "</td>";
+
+
+            echo "<td class='border border-black'>
+                    <form action='gastEditReservering.php' method='post'>
+                        <input type='hidden' name='reserveerId' value=" . $reserveer["reserveerId"] . ">
+                        <input type='hidden' name='reserveerVoornaam' value=" . $reserveer["reserveerVoornaam"] . ">
+                        <input type='hidden' name='reserveerAchternaam' value=" . $reserveer["reserveerAchternaam"] . ">
+                        <input type='hidden' name='reserveerEmail' value=" . $reserveer["reserveerEmail"] . ">
+                        <input type='hidden' name='reserveerPersonen' value=" . $reserveer["reserveerPersonen"] . ">
+                        <input type='hidden' name='reserveerTocht' value=" . $reserveer["reserveerTocht"] . ">
+                        <input type='hidden' name='reserveerDatum' value=" . $reserveer["reserveerDatum"] . ">
+                        <input type='hidden' name='reserveerStatus' value=" . $reserveer["reserveerStatus"] . ">";
+
+//            Deze functie checked of de gast zijn reserverering kan wijzigen
+            if ($reserveer["reserveerDatum"] > date("Y-m-d") && ($reserveer["reserveerStatus"] == 1)) {
+                echo "<input class='p-2 w-full cursor-pointer' type='submit' value='Wijzigen'>";
+            } else {
+                echo "<p class='text-center'>Niet mogelijk</p>";
+            }
+
+            echo "</form>
                 </td>";
             echo "</tr>";
         }
@@ -197,11 +263,75 @@ class Reserveer
         echo "<td class='border border-black p-2'>" . $reserveerTocht . "</td>";
         echo "<td class='border border-black p-2'>" . $reserveerDatum . "</td>";
         if ($reserveerStatus == 1) {
-            echo "<td class='border border-black p-2'>" . $reserveerStatus; echo  ": aangevraagd"; "</td>";
+            echo "<td class='border border-black p-2'>" . $reserveerStatus;
+            echo ": aangevraagd";
+            "</td>";
         } elseif ($reserveerStatus == 2) {
-            echo "<td class='border border-black p-2'>" . $reserveerStatus; echo  ": defenitief"; "</td>";
+            echo "<td class='border border-black p-2'>" . $reserveerStatus;
+            echo ": defenitief";
+            "</td>";
         } else {
-            echo "<td class='border border-black p-2'>" . $reserveerStatus; echo  ": afgekeurd"; "</td>";
+            echo "<td class='border border-black p-2'>" . $reserveerStatus;
+            echo ": afgekeurd";
+            "</td>";
+        }
+        echo "</tr>";
+    }
+
+    public function updateReserveringGast($reserveerId)
+    {
+        require "../../Database/db.php";
+
+        $reserveerVoornaam = $this->getReserveerVoornaam();
+        $reserveerAchternaam = $this->getReserveerAchternaam();
+        $reserveerEmail = $this->getReserveerEmail();
+        $reserveerPersonen = $this->getreserveerPersonen();
+        $reserveerTocht = $this->getReserveerTocht();
+        $reserveerDatum = $this->getReserveerDatum();
+        $reserveerStatus = $this->getReserveerStatus();
+
+        $sql = $conn->prepare
+        ("
+            update reserveringen set 
+                               reserveerId = :reserveerId, reserveerVoornaam = :reserveerVoornaam, reserveerAchternaam = :reserveerAchternaam, reserveerEmail = :reserveerEmail, reserveerPersonen = :reserveerPersonen, reserveerTocht = :reserveerTocht, reserveerDatum = :reserveerDatum, reserveerStatus = :reserveerStatus
+            WHERE reserveerId = :reserveerId
+            ");
+
+        // SQL query: variabelen in de statement zetten
+        $sql->bindParam(":reserveerId", $reserveerId);
+        $sql->bindParam(":reserveerVoornaam", $reserveerVoornaam);
+        $sql->bindParam(":reserveerAchternaam", $reserveerAchternaam);
+        $sql->bindParam(":reserveerEmail", $reserveerEmail);
+        $sql->bindParam(":reserveerPersonen", $reserveerPersonen);
+        $sql->bindParam(":reserveerTocht", $reserveerTocht);
+        $sql->bindParam(":reserveerDatum", $reserveerDatum);
+        $sql->bindParam(":reserveerStatus", $reserveerStatus);
+
+        $sql->execute();
+
+        echo "<p class='text-xl mb-5 text-center'>De reservering is gewijzigd.<br>";
+        header("refresh:2;url=gastReserveringen.php");
+
+        echo "<tr>";
+        echo "<td class='border border-black p-2'>" . $reserveerId . "</td>";
+        echo "<td class='border border-black p-2'>" . $reserveerVoornaam . "</td>";
+        echo "<td class='border border-black p-2'>" . $reserveerAchternaam . "</td>";
+        echo "<td class='border border-black p-2'>" . $reserveerEmail . "</td>";
+        echo "<td class='border border-black p-2'>" . $reserveerPersonen . "</td>";
+        echo "<td class='border border-black p-2'>" . $reserveerTocht . "</td>";
+        echo "<td class='border border-black p-2'>" . $reserveerDatum . "</td>";
+        if ($reserveerStatus == 1) {
+            echo "<td class='border border-black p-2'>" . $reserveerStatus;
+            echo ": aangevraagd";
+            "</td>";
+        } elseif ($reserveerStatus == 2) {
+            echo "<td class='border border-black p-2'>" . $reserveerStatus;
+            echo ": defenitief";
+            "</td>";
+        } else {
+            echo "<td class='border border-black p-2'>" . $reserveerStatus;
+            echo ": afgekeurd";
+            "</td>";
         }
         echo "</tr>";
     }
@@ -234,5 +364,31 @@ class Reserveer
         echo "</tr>";
 
     }
+    public function deleteReserveringGast($reserveerId)
+    {
+        require "../../Database/db.php";
 
+        $reserveerVoornaam = $this->getReserveerVoornaam();
+        $reserveerAchternaam = $this->getReserveerAchternaam();
+        $reserveerEmail = $this->getReserveerEmail();
+        $reserveerPersonen = $this->getreserveerPersonen();
+        $reserveerTocht = $this->getReserveerTocht();
+        $reserveerDatum = $this->getReserveerDatum();
+        $reserveerStatus = $this->getReserveerStatus();
+
+        $sql = $conn->prepare("DELETE FROM reserveringen WHERE reserveerId = :reserveerId");
+        $sql->bindParam(":reserveerId", $reserveerId);
+        $sql->execute();
+
+        echo "<tr>";
+        echo "<td class='border border-black p-2'>" . $reserveerId . "</td>";
+        echo "<td class='border border-black p-2'>" . $reserveerVoornaam . "</td>";
+        echo "<td class='border border-black p-2'>" . $reserveerAchternaam . "</td>";
+        echo "<td class='border border-black p-2'>" . $reserveerEmail . "</td>";
+        echo "<td class='border border-black p-2'>" . $reserveerPersonen . "</td>";
+        echo "<td class='border border-black p-2'>" . $reserveerTocht . "</td>";
+        echo "<td class='border border-black p-2'>" . $reserveerDatum . "</td>";
+        echo "<td class='border border-black p-2'>" . $reserveerStatus . "</td>";
+        echo "</tr>";
+    }
 }
