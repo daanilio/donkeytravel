@@ -45,7 +45,7 @@ $reservering = new Reserveer($reserveerVoornaam, $reserveerAchternaam, $reservee
             <?php $reservering->delete($reserveerId); ?>
         </table>
         <br><br>
-        <p class="text-center"><a  href='../../Views/home.php'>Ga terug naar de hoofdpagina</a></p>
+        <p class="text-center"><a  href='../index.php'>Ga terug naar de hoofdpagina</a></p>
     </div>
 </main>
 <?php include '../../Components/footer.php'; ?>

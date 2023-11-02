@@ -1,3 +1,19 @@
+<?php
+
+include '../../Components/header.php';
+require_once '../../Database/database.php';
+
+require_once '../../Models/Tochten.php';
+
+use Models\Tochten;
+
+$tochten = new Tochten();
+
+// Checks if you're logged in and if you have the right permissions.
+session_start();
+
+if (isset($_SESSION['id']) && $_SESSION['email']) {
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,16 +25,6 @@
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="flex min-h-screen justify-between flex-col">
-
-<?php
-include '../../Components/header.php';
-require_once '../../Database/db.php';
-
-require_once '../../Models/Tochten.php';
-use Models\Tochten;
-
-$tochten = new Tochten()
-?>
 
 <main class="py-18 px-64 flex justify-center">
     <form class="w-1/2 bg-green-800 rounded-lg p-12 m-12 text-black" action="createReserveringController.php" method="post">
@@ -66,3 +72,9 @@ $tochten = new Tochten()
 </html>
 
 
+    <?php
+} else {
+    header("Location: ../index.php");
+}
+
+?>
