@@ -18,11 +18,12 @@ class Gebruikers
      * @param $email
      * @param $wachtwoord
      */
-    public function __construct($voornaam = NULL, $achternaam = NULL, $email = NULL, $wachtwoord = NULL)
+    public function __construct($voornaam = NULL, $achternaam = NULL, $email = NULL, $functie = NULL, $wachtwoord = NULL)
     {
         $this->voornaam = $voornaam;
         $this->achternaam = $achternaam;
         $this->email = $email;
+        $this->functie = $functie;
         $this->wachtwoord = $wachtwoord;
     }
 

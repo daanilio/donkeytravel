@@ -55,6 +55,7 @@
                 <input type="hidden" name="voornaam" id="voornaam" value="<?php echo $voornaam?>">
                 <input type="hidden" name="achternaam" id="achternaam" value="<?php echo $achternaam?>">
                 <input type="hidden" name="email" id="email" value="<?php echo $email?>">
+                <input type="hidden" name="functie" id="functie" value="<?php echo $functie?>">
                 <input type="submit" value="Verwijder Gebruiker" class="p-1 bg-red-500 hover:bg-red-800 border border-gray-700 w-full rounded-md text-white">
             </form>
         </div>
