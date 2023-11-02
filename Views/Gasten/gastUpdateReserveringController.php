@@ -40,7 +40,7 @@ $reservering = new Reserveer($reserveerVoornaam, $reserveerAchternaam, $reservee
                 <th class="border border-black p-2">Datum</th>
                 <th class="border border-black p-2">Status</th>
             </tr>
-            <?php $reservering->update($reserveerId); ?>
+            <?php $reservering->updateReserveringGast($reserveerId); ?>
         </table>
     </div>
 </main>

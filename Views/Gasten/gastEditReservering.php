@@ -1,7 +1,6 @@
-<!doctype html>
 <?php
 include '../../Components/header.php';
-require_once '../../Database/database.php';
+require_once '../../Database/db.php';
 
 require '../../Models/Reserveer.php';
 
@@ -20,13 +19,14 @@ use Models\Tochten;
 
 $tochten = new Tochten();
 ?>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Update</title>
+    <title>Wijzig reservering</title>
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="flex min-h-screen justify-between flex-col">
@@ -35,7 +35,7 @@ $tochten = new Tochten();
 <main class="py-18 px-64">
     <div class="flex justify-center align-center my-auto">
         <form class="w-1/2 bg-green-800 rounded-t-lg px-12 pt-12 mt-12 text-black flex flex-col"
-              action="updateReserveringController.php"
+              action="gastUpdateReserveringController.php"
               method="post">
             <div class="mb-5">
                 <label class="text-white" for="id">Reservering id</label>
@@ -82,7 +82,7 @@ $tochten = new Tochten();
                        class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full"
                        value="<?php echo $reserveerDatum ?>">
             </div>
-            <div class="mb-5">
+            <div class="mb-5 hidden">
                 <label class="text-white" for="reserveerStatus">Status reservering</label><br>
                 <select name="status" id="reserveerStatus"
                         class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full">
@@ -109,7 +109,7 @@ $tochten = new Tochten();
     </div>
 
     <div class="flex justify-center align-center my-auto mb-20 bg-green-800 rounded-b-lg w-1/2 mx-auto">
-        <form action="deleteReserveringBevestiging.php" method="post" class="w-full mx-12 pb-4">
+        <form action="gastDeleteReserveringBevestiging.php" method="post" class="w-full mx-12 pb-4">
             <input type="hidden" name="reserveerId" id="reserveerId" value="<?php echo $reserveerId ?>">
             <input type="hidden" name="id" id="id"
                    class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full" readonly

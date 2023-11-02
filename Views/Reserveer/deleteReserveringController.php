@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Reservering verwijderd</title>
 </head>
+
 <?php
 
 require_once '../../Models/Reserveer.php';
@@ -20,8 +21,9 @@ $reserveerEmail = $_POST["email"];
 $reserveerPersonen = $_POST["personen"];
 $reserveerTocht = $_POST["tochten"];
 $reserveerDatum = $_POST["datum"];
+$reserveerStatus = $_POST["status"];
 
-$reservering = new Reserveer($reserveerVoornaam, $reserveerAchternaam, $reserveerEmail, $reserveerPersonen, $reserveerTocht, $reserveerDatum);
+$reservering = new Reserveer($reserveerVoornaam, $reserveerAchternaam, $reserveerEmail, $reserveerPersonen, $reserveerTocht, $reserveerDatum, $reserveerStatus);
 ?>
 
 <body class="flex min-h-screen justify-between flex-col">
@@ -38,6 +40,7 @@ $reservering = new Reserveer($reserveerVoornaam, $reserveerAchternaam, $reservee
                 <th class="border border-black p-2">Personen</th>
                 <th class="border border-black p-2">Tochtnaam</th>
                 <th class="border border-black p-2">Datum</th>
+                <th class="border border-black p-2">Status</th>
             </tr>
             <?php $reservering->delete($reserveerId); ?>
         </table>
