@@ -26,40 +26,42 @@
         <div></div>
         <div class="flex justify-center sm:flex sm:items-center sm:w-auto col-span-2">
             <div class="sm:flex-row text-sm uppercase">
-                <a href="index.php#informatie"
+                <a href="home.php#informatie"
                    class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Informatie</a>
-                <a href="index.php#overOns" class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Over
-                    ons</a>
-                <a href="Reserveer/createReservering.php" class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Reserveer</a>
+                <a href="home.php#overOns" class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Over
+                    Donkey Travel</a>
+                <a href="../Views/Reserveer/createReservering.php" class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Reserveer</a>
             </div>
         </div>
         <div class="flex justify-end uppercase text-sm">
-            <a href="Login/login.php" class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Inloggen</a>
+            <a href="#" class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Inloggen</a>
             <img class="flex m-0 p-0" src="../Images/person.png" alt="account icon" style="max-width: 40px;">
         </div>
     </nav>
 </div>
 
-<div class="p-24" id="overOns">
+<div id="overOns"  class="p-24">
     <div class="grid grid-cols-4 gap-4 h-36 text-center w-full">
         <div class="col-span-2 mx-auto ">
-            <img class="rounded-3xl border-4 border-gray-800" src="../Images/foto_van_ezel.jpg" alt="">
+            <img class="rounded-3xl border-4 border-gray-800" src="../Images/foto_van_ezel.jpg" alt="foto van een ezel">
         </div>
         <div class="col-span-2 text-left p-12 rounded-3xl border-4 border-gray-800 bg-green-800 text-white">
             <div>
-                <h1 class="font-bold uppercase text-3xl">Over ons</h1>
-                <p class="pt-4 text-1xl text-justify">Donkey Travel is een uniek en avontuurlijk bedrijf
-                    dat
-                    gespecialiseerd is in ezel-huifkar ritjes voor avontuurlijke reizigers zoals jij!
-                    <br> <br>
-                    Onze onderneming is opgericht door drie gepassioneerde eigenaren: Lisa, Danilio, en Dylan. Samen
-                    delen we een diepe liefde voor de natuur, dieren, en het creëren van onvergetelijke herinneringen
-                    voor onze klanten.
-                    <br> <br>
-                    Wij leveren huifkar ritjes (met ezel) door de mooie gebieden in Nederland. <br>
-                    Een keertje proberen? Reserveren kan makkelijk via deze site. Navigeer naar <a href="#"><i>Reserveren</i></a>
-                    en
-                    beleef onze unieke ervaring!
+                <h1 class="font-bold uppercase text-3xl">Over Donkey Travel</h1>
+                <p class="pt-4 text-1xl text-justify">Donkey Travel is 11 jaar geleden opgericht door eigenaar Loes de
+                    Korte.
+                    <br>
+                    Na haar studie Culturele antropologie en ontwikkelingssociologie heeft Loes de Korte een aantal
+                    jaren op het ministerie van Sociale Zaken en Werkgelegenheid gewerkt.
+                    <br>
+                    Al snel werd duidelijk dat ze
+                    daar niet op haar plaats was. Ze besloot haar twee passies (ezels en reizen) te combineren.
+                    <br><br>
+                    De hoofdactivitieit van Donkey Travel is het
+                    arrangeren en begeleiden van ezel-huifkartochten.
+                    <br>
+                    Donkey Travel heeft inmiddels een twintigtal ezels met huifkarren rondrijden. Dat aantal breidt zich
+                    nog altijd uit.
                 </p>
             </div>
         </div>
@@ -92,7 +94,7 @@
             <p class="p-5">Het reserveren van een ezel-huifkar rit bij Donkey Travel is eenvoudig en handig. Maak gewoon
                 een account aan en selecteer de gewenste datum en locatie voor je rit.
                 <br><br>
-                <a href="#" class="hover:text-gray-500">Reserveer nu</a>
+                <a href="../Views/Reserveer/createReservering.php" class="hover:text-gray-500">Reserveer nu</a>
             </p>
         </div>
     </div>
