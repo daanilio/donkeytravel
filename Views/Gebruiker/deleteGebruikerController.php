@@ -22,8 +22,7 @@ $gebruiker = new Gebruikers();
 <?php include '../../Components/header.php'; ?>
 <main class="py-18 px-64 flex justify-center">
     <div class="">
-        <h2 class="text-center mb-8">Deze gebruiker is verwijderd:<br></h2>
-            <?php $gebruiker->delete($id); ?>
+        <?php $gebruiker->delete($id); ?>
         <br><br>
         <p class="text-center"><a  href='../index.php'>Ga terug naar de hoofdpagina</a></p>
     </div>

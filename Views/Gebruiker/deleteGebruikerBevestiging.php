@@ -41,7 +41,7 @@ $gebruiker = new Gebruikers();
 
             </div>
             <div class="mb-5">
-                <label class="text-white" for="voornaam">Achternaam</label>
+                <label class="text-white" for="voornaam">Voornaam</label>
                 <input type="text" name="voornaam" id="voornaam"
                        class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full" readonly
                        value="<?php echo $voornaam ?>">
