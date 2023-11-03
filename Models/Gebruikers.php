@@ -18,11 +18,12 @@ class Gebruikers
      * @param $email
      * @param $wachtwoord
      */
-    public function __construct($voornaam = NULL, $achternaam = NULL, $email = NULL, $wachtwoord = NULL)
+    public function __construct($voornaam = NULL, $achternaam = NULL, $email = NULL, $functie = NULL, $wachtwoord = NULL)
     {
         $this->voornaam = $voornaam;
         $this->achternaam = $achternaam;
         $this->email = $email;
+        $this->functie = $functie;
         $this->wachtwoord = $wachtwoord;
     }
 
@@ -119,9 +120,13 @@ class Gebruikers
             echo "<td class='border border-black'>" . $gebruiker["voornaam"] . "</td>";
             echo "<td class='border border-black'>" . $gebruiker["achternaam"] . "</td>";
             echo "<td class='border border-black'>" . $gebruiker["email"] . "</td>";
-            echo "<td class='border border-black'>" . $gebruiker["functie"] . "</td>";
+            if ($gebruiker["functie"] === 1) {
+                echo "<td class='border border-black'>Medewerker</td>";
+            } elseif ($gebruiker["functie"] === 0) {
+                echo "<td class='border border-black'>Klant</td>";
+            }
             echo "<td class='border border-black'>
-                    <form action='#' method='post'>
+                    <form action='../Gebruiker/editGebruiker.php' method='post'>
                         <input type='hidden' name='id' value=" .$gebruiker["id"].">
                         <input type='hidden' name='voornaam' value=" .$gebruiker["voornaam"]. ">
                         <input type='hidden' name='achternaam' value=" .$gebruiker["achternaam"]. ">

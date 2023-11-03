@@ -26,15 +26,15 @@
         <div></div>
         <div class="flex justify-center sm:flex sm:items-center sm:w-auto col-span-2">
             <div class="sm:flex-row text-sm uppercase">
-                <a href="home.php#informatie"
+                <a href="index.php#informatie"
                    class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Informatie</a>
-                <a href="home.php#overOns" class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Over
+                <a href="index.php#overOns" class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Over
                     Donkey Travel</a>
                 <a href="../Views/Reserveer/createReservering.php" class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Reserveer</a>
             </div>
         </div>
         <div class="flex justify-end uppercase text-sm">
-            <a href="#" class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Inloggen</a>
+            <a href="Login/login.php" class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Inloggen</a>
             <img class="flex m-0 p-0" src="../Images/person.png" alt="account icon" style="max-width: 40px;">
         </div>
     </nav>

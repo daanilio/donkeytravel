@@ -31,6 +31,7 @@ if (isset($_POST['email']) && isset($_POST['wachtwoord'])) {
                 $_SESSION['email'] = $row['email'];
                 $_SESSION['voornaam'] = $row['voornaam'];
                 $_SESSION['achternaam'] = $row['achternaam'];
+                $_SESSION['functie'] = $row['functie'];
                 $_SESSION['id'] = $row['id'];
                 header("Location: ../index.php");
                 exit();
