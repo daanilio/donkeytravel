@@ -158,7 +158,7 @@ class Reserveer
 
     public function readReserveringGast($id)
     {
-        require "../../Database/db.php";
+        require "../../Database/database.php";
 
         $sql = $conn->prepare("select * from reserveringen WHERE reserveerId = $id");
 
@@ -280,7 +280,7 @@ class Reserveer
 
     public function updateReserveringGast($reserveerId)
     {
-        require "../../Database/db.php";
+        require "../../Database/database.php";
 
         $reserveerVoornaam = $this->getReserveerVoornaam();
         $reserveerAchternaam = $this->getReserveerAchternaam();
@@ -366,7 +366,7 @@ class Reserveer
     }
     public function deleteReserveringGast($reserveerId)
     {
-        require "../../Database/db.php";
+        require "../../Database/database.php";
 
         $reserveerVoornaam = $this->getReserveerVoornaam();
         $reserveerAchternaam = $this->getReserveerAchternaam();
