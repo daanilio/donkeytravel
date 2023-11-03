@@ -24,6 +24,12 @@ $reserveerDatum = $_POST["datum"];
 $reserveerStatus = $_POST["status"];
 
 $reservering = new Reserveer($reserveerVoornaam, $reserveerAchternaam, $reserveerEmail, $reserveerPersonen, $reserveerTocht, $reserveerDatum, $reserveerStatus);
+
+// Checks if you're logged in and if you have the right permissions.
+session_start();
+
+if (isset($_SESSION['id']) && $_SESSION['email']) {
+if ($_SESSION['functie'] === "medewerker") {
 ?>
 
 <body class="flex min-h-screen justify-between flex-col">
@@ -52,3 +58,12 @@ $reservering = new Reserveer($reserveerVoornaam, $reserveerAchternaam, $reservee
 
 </body>
 </html>
+<?php
+} else {
+    header("Location: ../index.php");
+}
+} else {
+    header("Location: ../index.php");
+    exit();
+}
+?>
