@@ -13,7 +13,7 @@ include '../../Components/header.php';
         <meta name="viewport"
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Ezel</title>
+        <title>Herberg</title>
         <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     </head>
     <body class="flex min-h-screen justify-between flex-col">
@@ -33,6 +33,7 @@ include '../../Components/header.php';
             <div class="mb-5">
                 <label class="text-white" for="sterren">Sterren</label>
                 <select name="sterren" id="sterren">
+                    <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>

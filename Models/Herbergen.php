@@ -90,7 +90,7 @@ class Herbergen
     {
         require "../../Database/database.php";
 
-        $sql = $conn->prepare("select * from herberg");
+        $sql = $conn->prepare("select * from herbergen");
 
         $sql->execute();
 
@@ -101,10 +101,10 @@ class Herbergen
             echo "<td class='border border-black'>" . $herberg["sterren"] . "</td>";
             echo "<td class='border border-black'>
                     <form action='../Herberg/editHerberg.php' method='post'>
-                        <input type='hidden' name='ezelId' value=" .$herberg["id"].">
+                        <input type='hidden' name='id' value=" .$herberg["id"].">
                         <input type='hidden' name='naam' value=" .$herberg["naam"]. ">
                         <input type='hidden' name='locatie' value=" .$herberg["locatie"]. ">
-                        <input type='hidden' name='locatie' value=" .$herberg["sterren"]. ">
+                        <input type='hidden' name='sterren' value=" .$herberg["sterren"]. ">
                         <input type='submit' value='Edit'>
                     </form>
                 </td>";
