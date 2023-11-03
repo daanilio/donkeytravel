@@ -41,8 +41,7 @@ class Tochten
         $tochtLocatie = $this->getTochtLocatie();
 
         // SQL query: voor invoer in de tabel
-        $sql = $conn->prepare("INSERT INTO tochten (tochtLocatie) 
-    VALUES (:tochtLocatie");
+        $sql = $conn->prepare("INSERT INTO tochten (tochtLocatie) VALUES (:tochtLocatie)");
 
         $sql->bindParam(":tochtLocatie", $tochtLocatie);
 
@@ -51,7 +50,7 @@ class Tochten
 
         echo "<br> De tocht is verzonden en wordt verwerkt.";
         echo "<br><br>Tocht informatie: <br>";
-        echo "<br> <p class='font-bold'>Locatie van tocht</p> " . $this->getTochtLocatie();
+        echo "<br> <p class='font-bold'>Naam van tocht</p> " . $this->getTochtLocatie();
 
         echo "<br><br> <a href='../../Views/index.php'>Ga terug naar de hoofdpagina</a>";
     }
