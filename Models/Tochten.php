@@ -70,7 +70,7 @@ class Tochten
             echo "<td class='border border-black p-2'>" . $tochten["tochtLocatie"] . "</td>";
 
             echo "<td class='border border-black'>
-                    <form action='editReservering.php' method='post'>
+                    <form action='editTocht.php' method='post'>
                         <input type='hidden' name='tochtId' value=" . $tochten["tochtId"] . ">
                         <input type='hidden' name='tochtLocatie' value=" . $tochten["tochtLocatie"] . ">
                         <input class='p-2' type='submit' value='Edit'>
@@ -80,5 +80,30 @@ class Tochten
         }
     }
 
+    public function update($tochtId)
+    {
+        require "../../Database/database.php";
+
+        $tochtLocatie = $this->getTochtLocatie();
+
+        $sql = $conn->prepare
+        ("
+            UPDATE tochten SET tochtLocatie = :tochtLocatie WHERE tochtId = :tochtId
+            ");
+
+        // SQL query: variabelen in de statement zetten
+        $sql->bindParam(":tochtId", $tochtId);
+        $sql->bindParam(":tochtLocatie", $tochtLocatie);
+
+        $sql->execute();
+
+        echo "<p class='text-xl mb-5 text-center'>De tocht is gewijzigd.<br> 
+            <a href='../Tochten/readTocht.php'>Ga terug.</a></p>";
+
+        echo "<tr>";
+        echo "<td class='border border-black p-2'>" . $tochtId . "</td>";
+        echo "<td class='border border-black p-2'>" . $tochtLocatie . "</td>";
+        echo "</tr>";
+    }
 
 }
