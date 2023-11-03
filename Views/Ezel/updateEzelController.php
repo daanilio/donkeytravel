@@ -17,7 +17,7 @@ $ezelId = $_POST["ezelId"];
 $naam = $_POST["naam"];
 $leeftijd = $_POST["leeftijd"];
 
-$ezel= new Ezels($naam, $leeftijd);
+$ezel = new Ezels($naam, $leeftijd);
 ?>
 
 <body class="flex min-h-screen justify-between flex-col">
