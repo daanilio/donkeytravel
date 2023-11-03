@@ -23,7 +23,7 @@ $ezel= new Ezels($naam, $leeftijd);
 <body class="flex min-h-screen justify-between flex-col">
 <?php include '../../Components/header.php'; ?>
 <main class="py-18 px-64 flex justify-center">
-    <?php $gebruiker->update($ezelId); ?>
+    <?php $ezel->update($ezelId); ?>
     <br>
     <p class="text-center"><a  href='../index.php'>Ga terug naar de hoofdpagina</a></p>
 </main>
