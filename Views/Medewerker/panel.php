@@ -90,11 +90,11 @@ if (isset($_SESSION['id']) && $_SESSION['email']) {
                             class="border-b-4 border-green-800">Tochten</span></h2>
                 <div class="mb-4"><br>
                     <span class="hover:bg-gray-800 hover:text-white p-3 border-2 rounded-lg text-center border-green-800 bg-white"><a
-                                href="">Create</a></span>
+                                href="../Tochten/createTocht.php">Create</a></span>
                     <span class="hover:bg-gray-800 hover:text-white p-3 border-2 rounded-lg text-center border-green-800 bg-white"><a
-                                href="">Read</a></span>
+                                href="../Tochten/readTocht.php">Read</a></span>
                     <span class="hover:bg-gray-800 hover:text-white p-3 border-2 rounded-lg text-center border-green-800 bg-white"><a
-                                href="">Update/Delete</a></span>
+                                href="../Tochten/readTocht.php">Update/Delete</a></span>
                 </div>
             </div>
         </div>
