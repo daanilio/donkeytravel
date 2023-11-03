@@ -16,6 +16,12 @@ use Models\Gebruikers;
 $id = $_POST["id"];
 
 $gebruiker = new Gebruikers();
+
+// Checks if you're logged in and if you have the right permissions.
+session_start();
+
+if (isset($_SESSION['id']) && $_SESSION['email']) {
+    if ($_SESSION['functie'] === 1) {
 ?>
 
 <body class="flex min-h-screen justify-between flex-col">
@@ -31,3 +37,12 @@ $gebruiker = new Gebruikers();
 
 </body>
 </html>
+<?php
+} else {
+    header("Location: ../Menu/menu.php");
+}
+} else {
+    header("Location: ../../index.php");
+    exit();
+}
+?>

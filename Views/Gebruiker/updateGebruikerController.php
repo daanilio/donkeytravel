@@ -20,6 +20,13 @@ $email = $_POST["email"];
 $functie = $_POST["functie"];
 
 $gebruiker = new Gebruikers($voornaam, $achternaam, $email, $functie);
+
+// Checks if you're logged in and if you have the right permissions.
+session_start();
+
+if (isset($_SESSION['id']) && $_SESSION['email']) {
+if ($_SESSION['functie'] === 1) {
+
 ?>
 
 <body class="flex min-h-screen justify-between flex-col">
@@ -32,3 +39,12 @@ $gebruiker = new Gebruikers($voornaam, $achternaam, $email, $functie);
 
 </body>
 </html>
+<?php
+} else {
+    header("Location: ../Menu/menu.php");
+}
+} else {
+    header("Location: ../../index.php");
+    exit();
+}
+?>
