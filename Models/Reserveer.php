@@ -392,6 +392,7 @@ VALUES (:klantId, :reserveerVoornaam, :reserveerAchternaam, :reserveerEmail, :re
     {
         require "../../Database/database.php";
 
+        $klantId = $this->getKlantId();
         $reserveerVoornaam = $this->getReserveerVoornaam();
         $reserveerAchternaam = $this->getReserveerAchternaam();
         $reserveerEmail = $this->getReserveerEmail();
@@ -406,6 +407,7 @@ VALUES (:klantId, :reserveerVoornaam, :reserveerAchternaam, :reserveerEmail, :re
 
         echo "<tr>";
         echo "<td class='border border-black p-2'>" . $reserveerId . "</td>";
+        echo "<td class='border border-black p-2'>" . $klantId . "</td>";
         echo "<td class='border border-black p-2'>" . $reserveerVoornaam . "</td>";
         echo "<td class='border border-black p-2'>" . $reserveerAchternaam . "</td>";
         echo "<td class='border border-black p-2'>" . $reserveerEmail . "</td>";

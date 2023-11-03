@@ -120,9 +120,9 @@ if (isset($_SESSION['id']) && $_SESSION['email']) {
     <div class="flex justify-center align-center my-auto mb-20 bg-green-800 rounded-b-lg w-1/2 mx-auto">
         <form action="gastDeleteReserveringBevestiging.php" method="post" class="w-full mx-12 pb-4">
             <input type="hidden" name="reserveerId" id="reserveerId" value="<?php echo $reserveerId ?>">
-            <input type="hidden" name="id" id="id"
+            <input type="hidden" name="klantId" id="klantId"
                    class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full" readonly
-                   value="<?php echo $reserveerId ?>">
+                   value="<?php echo $klantId ?>">
             <input type="hidden" name="voornaam" id="voornaam"
                    class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full"
                    value="<?php echo $reserveerVoornaam ?>">
