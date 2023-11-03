@@ -23,11 +23,11 @@ $sterren = $_POST["sterren"];
 <main class="py-18 px-64">
     <div class="flex justify-center align-center my-auto">
         <form class="w-1/2 bg-green-800 rounded-t-lg px-12 pt-12 mt-12 text-black flex flex-col"
-              action="updateEzelcontroller.php"
+              action="updateHerbergController.php"
               method="post">
             <div class="mb-5">
-                <label class="text-white" for="ezelId">Id</label>
-                <input type="text" name="ezelId" id="ezelId"
+                <label class="text-white" for="id">Id</label>
+                <input type="text" name="id" id="id"
                        class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full" readonly
                        value="<?php echo $id ?>">
 
