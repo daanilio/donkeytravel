@@ -70,8 +70,6 @@ if (isset($_SESSION['id']) && $_SESSION['email']) {
 
 </body>
 </html>
-
-
 <?php
 } else {
     header("Location: ../index.php");
