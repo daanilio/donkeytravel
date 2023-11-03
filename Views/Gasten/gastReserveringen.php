@@ -1,26 +1,21 @@
 <?php
 require "../../vendor/autoload.php";
 
-use Models\Gebruikers;
-
 require "../../Database/database.php";
 require_once '../../Models/Reserveer.php';
 
 use Models\Reserveer;
 
 $reserveer = new Reserveer();
-//$id = 9;
-
-$gebruiker = new Gebruikers();
-$id = $gebruiker->getId();
-
-$sql = $conn->prepare("select * from reserveringen WHERE reserveerId = $id");
-$sql->execute();
-
-$rowCount = $sql->rowCount();
 
 // Checks if you're logged in and if you have the right permissions.
 session_start();
+
+$id = $_SESSION['id'];
+
+$sql = $conn->prepare("select * from reserveringen WHERE klantId = $id");
+$sql->execute();
+$rowCount = $sql->rowCount();
 
 if (isset($_SESSION['id']) && $_SESSION['email']) {
 ?>
@@ -48,6 +43,7 @@ if (isset($_SESSION['id']) && $_SESSION['email']) {
     <table class="table-fixed border border-black border-collape">
         <tr class="border border-black">
             <th class="border border-black p-2">Reservering id</th>
+            <th class="border border-black p-2">Klant id</th>
             <th class="border border-black p-2">Voornaam</th>
             <th class="border border-black p-2">Achternaam</th>
             <th class="border border-black p-2">Email</th>
