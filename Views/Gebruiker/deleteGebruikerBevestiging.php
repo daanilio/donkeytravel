@@ -26,6 +26,13 @@ require_once '../../Models/Gebruikers.php';
 use Models\Gebruikers;
 
 $gebruiker = new Gebruikers();
+
+// Checks if you're logged in and if you have the right permissions.
+session_start();
+
+if (isset($_SESSION['id']) && $_SESSION['email']) {
+    if ($_SESSION['functie'] === "medewerker") {
+
 ?>
 
 <main class="py-18 px-64">
@@ -69,4 +76,12 @@ $gebruiker = new Gebruikers();
 </body>
 </html>
 
-
+<?php
+} else {
+    header("Location: ../index.php");
+}
+} else {
+    header("Location: ../index.php");
+    exit();
+}
+?>

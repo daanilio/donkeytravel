@@ -6,6 +6,12 @@ use Models\Gebruikers;
 // Create the object.
 $gebruikers = new Gebruikers();
 
+// Checks if you're logged in and if you have the right permissions.
+session_start();
+
+if (isset($_SESSION['id']) && $_SESSION['email']) {
+if ($_SESSION['functie'] === "medewerker") {
+
 ?>
 
 <table class="table-fixed border border-black border-collape w-full">
@@ -18,3 +24,13 @@ $gebruikers = new Gebruikers();
     </tr>
     <?php $gebruikers->read() ?>
 </table>
+
+<?php
+} else {
+    header("Location: ../index.php");
+}
+} else {
+    header("Location: ../index.php");
+    exit();
+}
+?>
