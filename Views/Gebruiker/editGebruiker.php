@@ -3,7 +3,7 @@
 session_start();
 
 if (isset($_SESSION['id']) && $_SESSION['email']) {
-    if ($_SESSION['functie'] ==== "medewerker") {
+    if ($_SESSION['functie'] === "medewerker") {
 
         ?>
         <!DOCTYPE html>
