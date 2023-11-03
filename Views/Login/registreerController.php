@@ -6,13 +6,14 @@ use Models\Gebruikers;
 $voornaam = $_POST ["voornaam"];
 $achternaam = $_POST ["achternaam"];
 $email = $_POST ["email"];
+$functie = "klant";
 $wachtwoord = $_POST ["wachtwoord"];
 
 // Maakt van het wachtwoord allemaal verschillende tekens voor beveiliging.
 $wachtwoord = md5($wachtwoord);
 
 // Maakt een object van de ingevoerde informatie.
-$gebruiker = new Gebruikers($voornaam, $achternaam, $email, $wachtwoord,);
+$gebruiker = new Gebruikers($voornaam, $achternaam, $email, $functie, $wachtwoord,);
 $gebruiker->create();
 
 header("refresh:2;url=loginController.php");
