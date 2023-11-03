@@ -106,4 +106,21 @@ class Tochten
         echo "</tr>";
     }
 
+    public function delete($tochtId)
+    {
+        require "../../Database/database.php";
+
+        $tochtLocatie = $this->getTochtLocatie();
+
+        $sql = $conn->prepare("DELETE FROM tochten WHERE tochtId = :tochtId");
+        $sql->bindParam(":tochtId", $tochtId);
+        $sql->execute();
+
+        echo "<tr>";
+        echo "<td class='border border-black p-2'>" . $tochtId . "</td>";
+        echo "<td class='border border-black p-2'>" . $tochtLocatie . "</td>";
+        echo "</tr>";
+
+    }
+
 }

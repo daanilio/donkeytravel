@@ -58,7 +58,7 @@ if ($_SESSION['functie'] === "medewerker") {
         <form action="deleteTochtBevestiging.php" method="post" class="w-full mx-12 pb-4">
             <input type="hidden" name="tochtId" id="tochtId" value="<?php echo $tochtId ?>">
 
-            <input type="hidden" name="klantId" id="klantId"
+            <input type="hidden" name="tochtLocatie" id="tochtLocatie"
                    class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full" readonly
                    value="<?php echo $tochtLocatie ?>">
 
