@@ -65,7 +65,7 @@ $sterren = $_POST["sterren"];
     </div>
 
     <div class="flex justify-center align-center my-auto mb-20 bg-green-800 rounded-b-lg w-1/2 mx-auto">
-        <form action="deleteEzelBevestiging.php" method="post" class="w-full mx-12 pb-4">
+        <form action="deleteHerbergBevestiging.php" method="post" class="w-full mx-12 pb-4">
             <input type="hidden" name="id" id="id"
                    class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full" readonly
                    value="<?php echo $id ?>">
