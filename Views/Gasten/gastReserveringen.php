@@ -1,26 +1,21 @@
 <?php
 require "../../vendor/autoload.php";
 
-use Models\Gebruikers;
-
 require "../../Database/database.php";
 require_once '../../Models/Reserveer.php';
 
 use Models\Reserveer;
 
 $reserveer = new Reserveer();
-//$id = 9;
-
-$gebruiker = new Gebruikers();
-$id = $gebruiker->getId();
-
-$sql = $conn->prepare("select * from reserveringen WHERE reserveerId = $id");
-$sql->execute();
-
-$rowCount = $sql->rowCount();
 
 // Checks if you're logged in and if you have the right permissions.
 session_start();
+
+$id = $_SESSION['id'];
+
+$sql = $conn->prepare("select * from reserveringen WHERE klantId = $id");
+$sql->execute();
+$rowCount = $sql->rowCount();
 
 if (isset($_SESSION['id']) && $_SESSION['email']) {
 ?>

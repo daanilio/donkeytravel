@@ -5,6 +5,7 @@ namespace Models;
 class Reserveer
 {
 
+    public $klantId;
     public $reserveerVoornaam;
     public $reserveerAchternaam;
     public $reserveerEmail;
@@ -14,6 +15,7 @@ class Reserveer
     public $reserveerStatus;
 
     /**
+     * @param $klantId
      * @param $reserveerVoornaam
      * @param $reserveerAchternaam
      * @param $reserveerEmail
@@ -22,8 +24,9 @@ class Reserveer
      * @param $reserveerDatum
      * @param $reserveerStatus
      */
-    public function __construct($reserveerVoornaam = NULL, $reserveerAchternaam = NULL, $reserveerEmail = NULL, $reserveerPersonen = NULL, $reserveerTocht = NULL, $reserveerDatum = NULL, $reserveerStatus = NULL)
+    public function __construct($klantId = NULL, $reserveerVoornaam = NULL, $reserveerAchternaam = NULL, $reserveerEmail = NULL, $reserveerPersonen = NULL, $reserveerTocht = NULL, $reserveerDatum = NULL, $reserveerStatus = NULL)
     {
+        $this->klantId = $klantId;
         $this->reserveerVoornaam = $reserveerVoornaam;
         $this->reserveerAchternaam = $reserveerAchternaam;
         $this->reserveerEmail = $reserveerEmail;
@@ -31,6 +34,11 @@ class Reserveer
         $this->reserveerTocht = $reserveerTocht;
         $this->reserveerDatum = $reserveerDatum;
         $this->reserveerStatus = $reserveerStatus;
+    }
+
+    public function getKlantId(): mixed
+    {
+        return $this->klantId;
     }
 
     public function getReserveerVoornaam(): mixed
@@ -74,6 +82,7 @@ class Reserveer
     {
         require "../../Database/database.php";
 
+        $klantId = $this->getKlantId();
         $reserveerVoornaam = $this->getReserveerVoornaam();
         $reserveerAchternaam = $this->getReserveerAchternaam();
         $reserveerEmail = $this->getReserveerEmail();
@@ -86,9 +95,10 @@ class Reserveer
         } else {
 
             // SQL query: voor invoer in de tabel
-            $sql = $conn->prepare("INSERT INTO reserveringen (reserveerVoornaam,reserveerAchternaam,reserveerEmail,reserveerPersonen,reserveerTocht,reserveerDatum) 
-    VALUES (:reserveerVoornaam, :reserveerAchternaam, :reserveerEmail, :reserveerPersonen, :reserveerTocht, :reserveerDatum)");
+            $sql = $conn->prepare("INSERT INTO reserveringen (klantId, reserveerVoornaam, reserveerAchternaam, reserveerEmail, reserveerPersonen, reserveerTocht, reserveerDatum) 
+VALUES (:klantId, :reserveerVoornaam, :reserveerAchternaam, :reserveerEmail, :reserveerPersonen, :reserveerTocht, :reserveerDatum)");
 
+            $sql->bindParam(":klantId", $klantId);
             $sql->bindParam(":reserveerVoornaam", $reserveerVoornaam);
             $sql->bindParam(":reserveerAchternaam", $reserveerAchternaam);
             $sql->bindParam(":reserveerEmail", $reserveerEmail);
@@ -160,7 +170,7 @@ class Reserveer
     {
         require "../../Database/database.php";
 
-        $sql = $conn->prepare("select * from reserveringen WHERE reserveerId = $id");
+        $sql = $conn->prepare("select * from reserveringen WHERE klantId = $id");
 
         $sql->execute();
 
@@ -364,6 +374,7 @@ class Reserveer
         echo "</tr>";
 
     }
+
     public function deleteReserveringGast($reserveerId)
     {
         require "../../Database/database.php";

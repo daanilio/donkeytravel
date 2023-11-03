@@ -17,11 +17,10 @@
                    class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Informatie</a>
                 <a href="../index.php#overOns" class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Over
                     ons</a>
-                <a href="./createReservering.php" class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Reserveer</a>
+                <a href="../Reserveer/createReservering.php" class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Reserveer</a>
             </div>
         </div>
         <div class="flex justify-end uppercase text-sm">
-            <a href="../Medewerker/panel.php" class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Medewerker</a>
             <?php
             if (isset($_SESSION['id']) && $_SESSION['email']) {
                 echo '<a href="../../Views/Login/uitloggen.php" class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Uitloggen</a>';
