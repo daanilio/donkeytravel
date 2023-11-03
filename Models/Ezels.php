@@ -108,8 +108,8 @@ class Ezels
         $sql = $conn->prepare("update ezels set naam = :naam, leeftijd = :leeftijd where id = :id");
 
         $sql->bindParam(":id", $id);
-        $sql->bindParam(":voornaam", $naam);
-        $sql->bindParam(":achternaam", $leeftijd);
+        $sql->bindParam(":naam", $naam);
+        $sql->bindParam(":leeftijd", $leeftijd);
         $sql->execute();
 
         echo "Deze ezel is gewijzigd";

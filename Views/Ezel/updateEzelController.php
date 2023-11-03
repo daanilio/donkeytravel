@@ -13,26 +13,19 @@ require_once '../../Models/Ezels.php';
 
 use Models\Ezels;
 
-$ezelid = $_POST["id"];
+$ezelId = $_POST["ezelId"];
 $naam = $_POST["naam"];
 $leeftijd = $_POST["leeftijd"];
 
-$ezels = new Ezels($ezelid, $naam, $leeftijd);
+$gebruiker = new Ezels($naam, $leeftijd);
 ?>
 
 <body class="flex min-h-screen justify-between flex-col">
 <?php include '../../Components/header.php'; ?>
 <main class="py-18 px-64 flex justify-center">
-    <div class="">
-        <table class="table-fixed border border-black border-collape">
-            <tr class="border border-black">
-                <th class="border border-black p-2">Ezel id</th>
-                <th class="border border-black p-2">Naam</th>
-                <th class="border border-black p-2">Leeftijd</th>
-            </tr>
-            <?php $ezels->update($ezelid); ?>
-        </table>
-    </div>
+    <?php $gebruiker->update($ezelId); ?>
+    <br>
+    <p class="text-center"><a  href='../index.php'>Ga terug naar de hoofdpagina</a></p>
 </main>
 <?php include '../../Components/footer.php'; ?>
 

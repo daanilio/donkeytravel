@@ -33,8 +33,8 @@ $tochten = new Ezels();
               action="updateEzelcontroller.php"
               method="post">
             <div class="mb-5">
-                <label class="text-white" for="id">Ezel id</label>
-                <input type="text" name="id" id="id"
+                <label class="text-white" for="ezelId">Ezel id</label>
+                <input type="text" name="ezelId" id="ezelId"
                        class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full" readonly
                        value="<?php echo $ezelId ?>">
 
