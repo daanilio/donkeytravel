@@ -14,6 +14,7 @@ require_once '../../Models/Reserveer.php';
 use Models\Reserveer;
 
 $reserveerId = $_POST["id"];
+$klantId = $_POST["klantId"];
 $reserveerVoornaam = $_POST["voornaam"];
 $reserveerAchternaam = $_POST["achternaam"];
 $reserveerEmail = $_POST["email"];
@@ -22,9 +23,8 @@ $reserveerTocht = $_POST["tochten"];
 $reserveerDatum = $_POST["datum"];
 $reserveerStatus = $_POST["status"];
 
-$reservering = new Reserveer($reserveerVoornaam, $reserveerAchternaam, $reserveerEmail, $reserveerPersonen, $reserveerTocht, $reserveerDatum, $reserveerStatus);
+$reservering = new Reserveer($klantId, $reserveerVoornaam, $reserveerAchternaam, $reserveerEmail, $reserveerPersonen, $reserveerTocht, $reserveerDatum, $reserveerStatus);
 
-// Checks if you're logged in and if you have the right permissions.
 session_start();
 
 if (isset($_SESSION['id']) && $_SESSION['email']) {
@@ -38,6 +38,7 @@ if ($_SESSION['functie'] === "medewerker") {
         <table class="table-fixed border border-black border-collape">
             <tr class="border border-black">
                 <th class="border border-black p-2">Reservering id</th>
+                <th class="border border-black p-2">Klant id</th>
                 <th class="border border-black p-2">Voornaam</th>
                 <th class="border border-black p-2">Achternaam</th>
                 <th class="border border-black p-2">Email</th>
