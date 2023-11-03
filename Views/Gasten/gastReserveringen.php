@@ -12,6 +12,11 @@ $sql = $conn->prepare("select * from reserveringen WHERE reserveerId = $id");
 $sql->execute();
 
 $rowCount = $sql->rowCount();
+
+// Checks if you're logged in and if you have the right permissions.
+session_start();
+
+if (isset($_SESSION['id']) && $_SESSION['email']) {
 ?>
 
 <!doctype html>
@@ -56,5 +61,9 @@ $rowCount = $sql->rowCount();
 
 </body>
 </html>
-
+<?php
+} else {
+    header("Location: ../index.php");
+}
+?>
 
