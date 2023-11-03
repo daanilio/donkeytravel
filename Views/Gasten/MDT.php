@@ -14,13 +14,9 @@
 
 <main class="px-64">
     <h2 class="text-center text-3xl mb-12">Welkom bij uw overzicht, <?php  ?></h2>
-    <div class="grid gap-x-20 gap-y-10 grid-cols-2">
-        <div class="bg-gray-200 border-4 border-gray-800 p-3 text-center rounded-xl"><h2 class="text-3xl font-bold"><span
-                    class="border-b-4 border-green-800 pb-1">MDT Account</span></h2>
-            <p class="mt-5"><a href="#">Beheer hier uw Donkey Travel account</a></p>
-        </div>
-        <div class="bg-gray-200 border-4 border-gray-800 rounded-xl p-3 text-center ">
-            <div class="rounded-xl"><h2 class="text-3xl font-bold hover:text-gray-700"><span
+    <div class="flex justify-center">
+        <div class="w-1/2 bg-gray-200 border-4 border-gray-800 rounded-xl p-3 text-center ">
+            <div class="rounded-xl"><h2 class="text-3xl font-bold"><span
                         class="border-b-4 border-green-800">Mijn boekingen</span></h2>
                 <div class="mb-4"><br>
                     <a href="gastReserveringen.php">Beheer en bekijk hier uw boekingen</a>

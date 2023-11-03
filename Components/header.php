@@ -24,9 +24,9 @@
             <a href="../Medewerker/panel.php" class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Medewerker</a>
             <?php
             if (isset($_SESSION['id']) && $_SESSION['email']) {
-                echo '<a href="../../Views/Login/login.php" class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Inloggen</a>';
-            } else {
                 echo '<a href="../../Views/Login/uitloggen.php" class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Uitloggen</a>';
+            } else {
+                echo '<a href="../../Views/Login/login.php" class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Inloggen</a>';
             }
             ?>
 
