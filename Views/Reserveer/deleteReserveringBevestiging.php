@@ -17,6 +17,7 @@ require_once '../../Database/database.php';
 require '../../Models/Reserveer.php';
 
 $reserveerId = $_POST["reserveerId"];
+$klantId = $_POST["klantId"];
 $reserveerVoornaam = $_POST["voornaam"];
 $reserveerAchternaam = $_POST["achternaam"];
 $reserveerEmail = $_POST["email"];
@@ -48,7 +49,12 @@ if ($_SESSION['functie'] === "medewerker") {
                 <input type="text" name="id" id="id"
                        class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full" readonly
                        value="<?php echo $reserveerId ?>">
-
+            </div>
+            <div class="mb-5">
+                <label class="text-white" for="klantId">Klant id</label>
+                <input type="text" name="klantId" id="klantId"
+                       class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full" readonly
+                       value="<?php echo $klantId ?>">
             </div>
             <div class="mb-5">
                 <label class="text-white" for="voornaam">Voornaam</label>
