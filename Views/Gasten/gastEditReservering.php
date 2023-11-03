@@ -18,6 +18,11 @@ require_once '../../Models/Tochten.php';
 use Models\Tochten;
 
 $tochten = new Tochten();
+
+// Checks if you're logged in and if you have the right permissions.
+session_start();
+
+if (isset($_SESSION['id']) && $_SESSION['email']) {
 ?>
 <!doctype html>
 <html lang="en">
@@ -148,5 +153,9 @@ $tochten = new Tochten();
 
 </body>
 </html>
-
+<?php
+} else {
+    header("Location: ../index.php");
+}
+?>
 
