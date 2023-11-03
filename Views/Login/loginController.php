@@ -29,8 +29,6 @@ if (isset($_POST['email']) && isset($_POST['wachtwoord'])) {
             $row = mysqli_fetch_assoc($result);
             if ($row['email'] === $email && $row['wachtwoord'] === $wachtwoord) {
                 $_SESSION['email'] = $row['email'];
-                $_SESSION['voornaam'] = $row['voornaam'];
-                $_SESSION['achternaam'] = $row['achternaam'];
                 $_SESSION['functie'] = $row['functie'];
                 $_SESSION['id'] = $row['id'];
                 header("Location: ../index.php");

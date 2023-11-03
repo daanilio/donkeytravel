@@ -120,7 +120,7 @@ class Gebruikers
             echo "<td class='border border-black'>" . $gebruiker["voornaam"] . "</td>";
             echo "<td class='border border-black'>" . $gebruiker["achternaam"] . "</td>";
             echo "<td class='border border-black'>" . $gebruiker["email"] . "</td>";
-            if ($gebruiker["functie"] === 1) {
+            if ($gebruiker["functie"] ==== "medewerker") {
                 echo "<td class='border border-black'>Medewerker</td>";
             } elseif ($gebruiker["functie"] === 0) {
                 echo "<td class='border border-black'>Klant</td>";

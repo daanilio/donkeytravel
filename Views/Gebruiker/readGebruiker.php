@@ -10,7 +10,7 @@ $gebruikers = new Gebruikers();
 session_start();
 
 if (isset($_SESSION['id']) && $_SESSION['email']) {
-if ($_SESSION['functie'] === 1) {
+if ($_SESSION['functie'] ==== "medewerker") {
 
 ?>
 
@@ -25,12 +25,12 @@ if ($_SESSION['functie'] === 1) {
     <?php $gebruikers->read() ?>
 </table>
 
-    <?php
+<?php
 } else {
-    header("Location: ../Menu/menu.php");
+    header("Location: ../index.php");
 }
 } else {
-    header("Location: ../../index.php");
+    header("Location: ../index.php");
     exit();
 }
 ?>

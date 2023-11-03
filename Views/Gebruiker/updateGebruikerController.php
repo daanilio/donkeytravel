@@ -25,7 +25,7 @@ $gebruiker = new Gebruikers($voornaam, $achternaam, $email, $functie);
 session_start();
 
 if (isset($_SESSION['id']) && $_SESSION['email']) {
-if ($_SESSION['functie'] === 1) {
+if ($_SESSION['functie'] === "medewerker") {
 
 ?>
 
@@ -41,10 +41,10 @@ if ($_SESSION['functie'] === 1) {
 </html>
 <?php
 } else {
-    header("Location: ../Menu/menu.php");
+    header("Location: ../index.php");
 }
 } else {
-    header("Location: ../../index.php");
+    header("Location: ../index.php");
     exit();
 }
 ?>

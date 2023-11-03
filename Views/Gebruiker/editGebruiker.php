@@ -3,7 +3,7 @@
 session_start();
 
 if (isset($_SESSION['id']) && $_SESSION['email']) {
-    if ($_SESSION['functie'] === 1) {
+    if ($_SESSION['functie'] ==== "medewerker") {
 
         ?>
         <!DOCTYPE html>
@@ -44,8 +44,8 @@ if (isset($_SESSION['id']) && $_SESSION['email']) {
                 <div class="mb-5">
                     <label for="functie">Functie</label>
                     <select name="functie" id="functie" class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full">
-                        <option value="1">Medewerker</option>
-                        <option value="0">Klant</option>
+                        <option value="medewerker">Medewerker</option>
+                        <option value="klant">Klant</option>
                     </select>
                 </div>
                 <input type="submit" value="Update Gebruiker" class="p-1 bg-green-100 hover:bg-green-300 border border-gray-700 w-full rounded-md">
@@ -66,10 +66,10 @@ if (isset($_SESSION['id']) && $_SESSION['email']) {
         </html>
 <?php
 } else {
-    header("Location: ../Menu/menu.php");
+    header("Location: ../index.php");
 }
 } else {
-    header("Location: ../../index.php");
+    header("Location: ../index.php");
     exit();
 }
 ?>

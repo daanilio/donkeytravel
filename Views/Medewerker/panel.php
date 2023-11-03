@@ -3,7 +3,7 @@
 session_start();
 
 if (isset($_SESSION['id']) && $_SESSION['email']) {
-    if ($_SESSION['functie'] === 1); {
+    if ($_SESSION['functie'] === "medewerker") {
 ?>
 <!doctype html>
 <html lang="en">
@@ -108,6 +108,12 @@ if (isset($_SESSION['id']) && $_SESSION['email']) {
 </body>
 </html>
 <?php
-    }
+} else {
+    header("Location: ../index.php");
 }
+} else {
+    header("Location: ../index.php");
+    exit();
+}
+?>
 

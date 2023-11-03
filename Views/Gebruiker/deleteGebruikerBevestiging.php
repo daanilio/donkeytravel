@@ -31,7 +31,7 @@ $gebruiker = new Gebruikers();
 session_start();
 
 if (isset($_SESSION['id']) && $_SESSION['email']) {
-    if ($_SESSION['functie'] === 1) {
+    if ($_SESSION['functie'] ==== "medewerker") {
 
 ?>
 
@@ -78,10 +78,10 @@ if (isset($_SESSION['id']) && $_SESSION['email']) {
 
 <?php
 } else {
-    header("Location: ../Menu/menu.php");
+    header("Location: ../index.php");
 }
 } else {
-    header("Location: ../../index.php");
+    header("Location: ../index.php");
     exit();
 }
 ?>
