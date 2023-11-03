@@ -24,6 +24,12 @@ require_once '../../Models/Herbergen.php';
 use Models\Herbergen;
 
 $herberg = new Herbergen();
+
+// Checks if you're logged in and if you have the right permissions.
+session_start();
+
+if (isset($_SESSION['id']) && $_SESSION['email']) {
+if ($_SESSION['functie'] === "medewerker") {
 ?>
 
 <main class="py-18 px-64">
@@ -70,5 +76,13 @@ $herberg = new Herbergen();
 
 </body>
 </html>
-
+<?php
+} else {
+    header("Location: ../index.php");
+}
+} else {
+    header("Location: ../index.php");
+    exit();
+}
+?>
 

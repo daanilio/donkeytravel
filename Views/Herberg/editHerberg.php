@@ -7,6 +7,12 @@ $id = $_POST["id"];
 $naam = $_POST["naam"];
 $locatie = $_POST["locatie"];
 $sterren = $_POST["sterren"];
+
+// Checks if you're logged in and if you have the right permissions.
+session_start();
+
+if (isset($_SESSION['id']) && $_SESSION['email']) {
+if ($_SESSION['functie'] === "medewerker") {
 ?>
 <html lang="en">
 <head>
@@ -88,5 +94,13 @@ $sterren = $_POST["sterren"];
 
 </body>
 </html>
-
+<?php
+} else {
+    header("Location: ../index.php");
+}
+} else {
+    header("Location: ../index.php");
+    exit();
+}
+?>
 

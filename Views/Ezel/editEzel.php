@@ -13,7 +13,13 @@ require_once '../../Models/Ezels.php';
 
 use Models\Ezels;
 
-$tochten = new Ezels();
+$ezel = new Ezels();
+
+// Checks if you're logged in and if you have the right permissions.
+session_start();
+
+if (isset($_SESSION['id']) && $_SESSION['email']) {
+if ($_SESSION['functie'] === "medewerker") {
 ?>
 <html lang="en">
 <head>
@@ -80,5 +86,13 @@ $tochten = new Ezels();
 
 </body>
 </html>
-
+<?php
+} else {
+    header("Location: ../index.php");
+}
+} else {
+    header("Location: ../index.php");
+    exit();
+}
+?>
 
