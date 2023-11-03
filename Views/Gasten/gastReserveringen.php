@@ -43,6 +43,7 @@ if (isset($_SESSION['id']) && $_SESSION['email']) {
     <table class="table-fixed border border-black border-collape">
         <tr class="border border-black">
             <th class="border border-black p-2">Reservering id</th>
+            <th class="border border-black p-2">Klant id</th>
             <th class="border border-black p-2">Voornaam</th>
             <th class="border border-black p-2">Achternaam</th>
             <th class="border border-black p-2">Email</th>

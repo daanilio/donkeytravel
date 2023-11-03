@@ -179,6 +179,7 @@ VALUES (:klantId, :reserveerVoornaam, :reserveerAchternaam, :reserveerEmail, :re
         foreach ($sql as $reserveer) {
             echo "<tr>";
             echo "<td class='border border-black p-2'>" . $reserveer["reserveerId"] . "</td>";
+            echo "<td class='border border-black p-2'>" . $reserveer["klantId"] . "</td>";
             echo "<td class='border border-black p-2'>" . $reserveer["reserveerVoornaam"] . "</td>";
             echo "<td class='border border-black p-2'>" . $reserveer["reserveerAchternaam"] . "</td>";
             echo "<td class='border border-black p-2'>" . $reserveer["reserveerEmail"] . "</td>";
@@ -211,6 +212,7 @@ VALUES (:klantId, :reserveerVoornaam, :reserveerAchternaam, :reserveerEmail, :re
             echo "<td class='border border-black'>
                     <form action='gastEditReservering.php' method='post'>
                         <input type='hidden' name='reserveerId' value=" . $reserveer["reserveerId"] . ">
+                        <input type='hidden' name='klantId' value=" . $reserveer["klantId"] . ">
                         <input type='hidden' name='reserveerVoornaam' value=" . $reserveer["reserveerVoornaam"] . ">
                         <input type='hidden' name='reserveerAchternaam' value=" . $reserveer["reserveerAchternaam"] . ">
                         <input type='hidden' name='reserveerEmail' value=" . $reserveer["reserveerEmail"] . ">
@@ -298,6 +300,7 @@ VALUES (:klantId, :reserveerVoornaam, :reserveerAchternaam, :reserveerEmail, :re
     {
         require "../../Database/database.php";
 
+        $klantId = $this->getKlantId();
         $reserveerVoornaam = $this->getReserveerVoornaam();
         $reserveerAchternaam = $this->getReserveerAchternaam();
         $reserveerEmail = $this->getReserveerEmail();
@@ -309,12 +312,13 @@ VALUES (:klantId, :reserveerVoornaam, :reserveerAchternaam, :reserveerEmail, :re
         $sql = $conn->prepare
         ("
             update reserveringen set 
-                               reserveerId = :reserveerId, reserveerVoornaam = :reserveerVoornaam, reserveerAchternaam = :reserveerAchternaam, reserveerEmail = :reserveerEmail, reserveerPersonen = :reserveerPersonen, reserveerTocht = :reserveerTocht, reserveerDatum = :reserveerDatum, reserveerStatus = :reserveerStatus
+                               reserveerId = :reserveerId, klantId = :klantId,reserveerVoornaam = :reserveerVoornaam, reserveerAchternaam = :reserveerAchternaam, reserveerEmail = :reserveerEmail, reserveerPersonen = :reserveerPersonen, reserveerTocht = :reserveerTocht, reserveerDatum = :reserveerDatum, reserveerStatus = :reserveerStatus
             WHERE reserveerId = :reserveerId
             ");
 
         // SQL query: variabelen in de statement zetten
         $sql->bindParam(":reserveerId", $reserveerId);
+        $sql->bindParam(":klantId", $klantId);
         $sql->bindParam(":reserveerVoornaam", $reserveerVoornaam);
         $sql->bindParam(":reserveerAchternaam", $reserveerAchternaam);
         $sql->bindParam(":reserveerEmail", $reserveerEmail);
@@ -325,11 +329,12 @@ VALUES (:klantId, :reserveerVoornaam, :reserveerAchternaam, :reserveerEmail, :re
 
         $sql->execute();
 
-        echo "<p class='text-xl mb-5 text-center'>De reservering is gewijzigd.<br>";
+        echo "<p class='text-xl mb-5 text-center'>Uw reservering is gewijzigd.<br>";
         header("refresh:2;url=gastReserveringen.php");
 
         echo "<tr>";
         echo "<td class='border border-black p-2'>" . $reserveerId . "</td>";
+        echo "<td class='border border-black p-2'>" . $klantId . "</td>";
         echo "<td class='border border-black p-2'>" . $reserveerVoornaam . "</td>";
         echo "<td class='border border-black p-2'>" . $reserveerAchternaam . "</td>";
         echo "<td class='border border-black p-2'>" . $reserveerEmail . "</td>";

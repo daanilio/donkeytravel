@@ -5,6 +5,7 @@ require_once '../../Database/database.php';
 require '../../Models/Reserveer.php';
 
 $reserveerId = $_POST["reserveerId"];
+$klantId = $_POST["klantId"];
 $reserveerVoornaam = $_POST["reserveerVoornaam"];
 $reserveerAchternaam = $_POST["reserveerAchternaam"];
 $reserveerEmail = $_POST["reserveerEmail"];
@@ -35,8 +36,6 @@ if (isset($_SESSION['id']) && $_SESSION['email']) {
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="flex min-h-screen justify-between flex-col">
-
-
 <main class="py-18 px-64">
     <div class="flex justify-center align-center my-auto">
         <form class="w-1/2 bg-green-800 rounded-t-lg px-12 pt-12 mt-12 text-black flex flex-col"
@@ -47,7 +46,12 @@ if (isset($_SESSION['id']) && $_SESSION['email']) {
                 <input type="text" name="id" id="id"
                        class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full" readonly
                        value="<?php echo $reserveerId ?>">
-
+            </div>
+            <div class="mb-5">
+                <label class="text-white" for="klantId">Klant id</label>
+                <input type="text" name="klantId" id="klantId"
+                       class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full" readonly
+                       value="<?php echo $klantId ?>">
             </div>
             <div class="mb-5">
                 <label class="text-white" for="voornaam">Voornaam</label>
