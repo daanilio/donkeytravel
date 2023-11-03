@@ -1,12 +1,19 @@
 <?php
 
-include '../../Components/header.php';
+require_once '../../Models/Tochten.php';
+
+use Models\Tochten;
+
+$tochten = new Tochten();
 
 // Checks if you're logged in and if you have the right permissions.
 session_start();
 
 if (isset($_SESSION['id']) && $_SESSION['email']) {
+if ($_SESSION['functie'] === "medewerker") {
+
 ?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -19,26 +26,30 @@ if (isset($_SESSION['id']) && $_SESSION['email']) {
 </head>
 <body class="flex min-h-screen justify-between flex-col">
 
-<main class="py-18 px-64 flex justify-center">
-    <form class="w-1/2 bg-green-800 rounded-lg p-12 m-12 text-black" action="createTochtController.php" method="post">
-        <div class="mb-5">
-            <label class="text-white" for="tochtLocatie">Naam van tocht</label>
-            <input type="text" name="tochtLocatie" id="tochtLocatie"
-                   class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full">
-        </div>
+<?php include '../../Components/header.php'; ?>
 
-        <label for="button"></label>
-        <input type="submit" name="verzenden" id="button"
-               class="p-1 bg-green-100 hover:bg-green-300 border border-gray-700 w-full rounded-md">
-    </form>
+<main class="py-18 px-64 flex justify-center">
+    <table class="table-fixed border border-black border-collape">
+        <tr class="border border-black">
+            <th class="border border-black p-2">Tocht id</th>
+            <th class="border border-black p-2">Naam tocht</th>
+            <th class="border border-black p-2"></th>
+        </tr>
+        <?php $tochten->read(); ?>
+    </table>
 </main>
 
 <?php include '../../Components/footer.php'; ?>
 
 </body>
 </html>
-<?php
+    <?php
 } else {
     header("Location: ../index.php");
 }
+} else {
+    header("Location: ../index.php");
+    exit();
+}
 ?>
+
