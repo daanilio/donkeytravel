@@ -20,6 +20,12 @@
 
     $ezel = new Ezels($ezelNaam, $ezelLeeftijd);
     $ezel->create();
+
+    // Checks if you're logged in and if you have the right permissions.
+    session_start();
+
+    if (isset($_SESSION['id']) && $_SESSION['email']) {
+    if ($_SESSION['functie'] === "medewerker") {
     ?>
 
 </main>
@@ -27,3 +33,12 @@
 
 </body>
 </html>
+<?php
+} else {
+    header("Location: ../index.php");
+}
+} else {
+    header("Location: ../index.php");
+    exit();
+}
+?>

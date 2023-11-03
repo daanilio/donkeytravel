@@ -18,6 +18,12 @@ $naam = $_POST["naam"];
 $leeftijd = $_POST["leeftijd"];
 
 $ezel = new Ezels($naam, $leeftijd);
+
+// Checks if you're logged in and if you have the right permissions.
+session_start();
+
+if (isset($_SESSION['id']) && $_SESSION['email']) {
+if ($_SESSION['functie'] === "medewerker") {
 ?>
 
 <body class="flex min-h-screen justify-between flex-col">
@@ -31,3 +37,12 @@ $ezel = new Ezels($naam, $leeftijd);
 
 </body>
 </html>
+<?php
+} else {
+    header("Location: ../index.php");
+}
+} else {
+    header("Location: ../index.php");
+    exit();
+}
+?>

@@ -13,6 +13,7 @@ $ezels = new Ezels();
 session_start();
 
 if (isset($_SESSION['id']) && $_SESSION['email']) {
+    if ($_SESSION['functie'] === "medewerker") {
     ?>
     <!doctype html>
     <html lang="en">
@@ -51,9 +52,12 @@ if (isset($_SESSION['id']) && $_SESSION['email']) {
     </html>
 
 
-    <?php
+<?php
 } else {
     header("Location: ../index.php");
 }
-
+} else {
+    header("Location: ../index.php");
+    exit();
+}
 ?>
