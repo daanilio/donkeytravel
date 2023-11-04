@@ -84,9 +84,9 @@ class Ezels
 
         foreach ($sql as $ezel) {
             echo "<tr>";
-            echo "<td class='border border-black'>" . $ezel["naam"] . "</td>";
-            echo "<td class='border border-black'>" . $ezel["leeftijd"] . "</td>";
-            echo "<td class='border border-black'>
+            echo "<td class='border border-black p-2'>" . $ezel["naam"] . "</td>";
+            echo "<td class='border border-black p-2'>" . $ezel["leeftijd"] . "</td>";
+            echo "<td class='border border-black p-2'>
                     <form action='../Ezel/editEzel.php' method='post'>
                         <input type='hidden' name='ezelId' value=" .$ezel["id"].">
                         <input type='hidden' name='naam' value=" .$ezel["naam"]. ">

@@ -51,11 +51,11 @@ if (isset($_SESSION['id']) && $_SESSION['email']) {
                             class="border-b-4 border-green-800">Ezels</span></h2>
                 <div class="mb-4"><br>
                     <span class="hover:bg-gray-800 hover:text-white p-3 border-2 rounded-lg text-center border-green-800 bg-white"><a
-                                href="">Create</a></span>
+                                href="../Ezel/createEzel.php">Create</a></span>
                     <span class="hover:bg-gray-800 hover:text-white p-3 border-2 rounded-lg text-center border-green-800 bg-white"><a
-                                href="">Read</a></span>
+                                href="../Ezel/readEzel.php">Read</a></span>
                     <span class="hover:bg-gray-800 hover:text-white p-3 border-2 rounded-lg text-center border-green-800 bg-white"><a
-                                href="">Update/Delete</a></span>
+                                href="../Ezel/readEzel.php">Update/Delete</a></span>
                 </div>
             </div>
         </div>
@@ -64,11 +64,11 @@ if (isset($_SESSION['id']) && $_SESSION['email']) {
                             class="border-b-4 border-green-800">Herbergen</span></h2>
                 <div class="mb-4"><br>
                     <span class="hover:bg-gray-800 hover:text-white p-3 border-2 rounded-lg text-center border-green-800 bg-white"><a
-                                href="">Create</a></span>
+                                href="../Herberg/createHerberg.php">Create</a></span>
                     <span class="hover:bg-gray-800 hover:text-white p-3 border-2 rounded-lg text-center border-green-800 bg-white"><a
-                                href="">Read</a></span>
+                                href="../Herberg/readHerberg.php">Read</a></span>
                     <span class="hover:bg-gray-800 hover:text-white p-3 border-2 rounded-lg text-center border-green-800 bg-white"><a
-                                href="">Update/Delete</a></span>
+                                href="../Herberg/readHerberg.php">Update/Delete</a></span>
                 </div>
             </div>
         </div>
@@ -77,11 +77,11 @@ if (isset($_SESSION['id']) && $_SESSION['email']) {
                             class="border-b-4 border-green-800">Restaurants</span></h2>
                 <div class="mb-4"><br>
                     <span class="hover:bg-gray-800 hover:text-white p-3 border-2 rounded-lg text-center border-green-800 bg-white"><a
-                                href="">Create</a></span>
+                                href="../Restaurants/createRestaurant.php">Create</a></span>
                     <span class="hover:bg-gray-800 hover:text-white p-3 border-2 rounded-lg text-center border-green-800 bg-white"><a
-                                href="">Read</a></span>
+                                href="../Restaurants/readRestaurant.php">Read</a></span>
                     <span class="hover:bg-gray-800 hover:text-white p-3 border-2 rounded-lg text-center border-green-800 bg-white"><a
-                                href="">Update/Delete</a></span>
+                                href="../Restaurants/readRestaurant.php">Update/Delete</a></span>
                 </div>
             </div>
         </div>
