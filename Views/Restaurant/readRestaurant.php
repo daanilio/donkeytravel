@@ -1,10 +1,10 @@
 <?php
 
-require_once '../../Models/Ezels.php';
+require_once '../../Models/Restaurant.php';
 
-use Models\Ezels;
+use Models\Restaurant;
 
-$ezel = new Ezels();
+$restaurant = new Restaurant();
 
 ?>
 
@@ -25,11 +25,11 @@ $ezel = new Ezels();
 <main class="py-18 px-64 flex justify-center">
     <table class="table-fixed border border-black border-collaps">
         <tr class="border border-black">
-            <th class="border border-black p-2">Ezel id</th>
+            <th class="border border-black p-2">Restaurant id</th>
             <th class="border border-black p-2">Naam</th>
-            <th class="border border-black p-2">Leeftijd</th>
+            <th class="border border-black p-2">Locatie</th>
         </tr>
-        <?php $ezel->read(); ?>
+        <?php $restaurant->read(); ?>
     </table>
 </main>
 
