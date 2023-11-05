@@ -13,6 +13,7 @@ require_once '../../Models/Restaurant.php';
 
 use Models\Restaurant;
 
+$id = $_POST["id"];
 $naam = $_POST["naam"];
 $locatie = $_POST["locatie"];
 
@@ -22,9 +23,9 @@ $restaurant = new Restaurant($naam, $locatie);
 <body class="flex min-h-screen justify-between flex-col">
 <?php include '../../Components/header.php'; ?>
 <main class="py-18 px-64 flex justify-center">
-    <?php $restaurant->update($restaurant); ?>
+    <?php $restaurant->update($id); ?>
     <br>
-    <p class="text-center"><a  href='../index.php'>Ga terug naar de hoofdpagina</a></p>
+    <p class="text-center"><a  href='../index.php'>. Ga terug naar de hoofdpagina</a></p>
 </main>
 <?php include '../../Components/footer.php'; ?>
 

@@ -12,15 +12,12 @@
 
 <?php
 include '../../Components/header.php';
-require_once '../../Database/database.php';
 
 require '../../Models/Restaurant.php';
 
 $id = $_POST["id"];
 $naam = $_POST["naam"];
 $locatie = $_POST["locatie"];
-
-require_once '../../Models/Ezels.php';
 
 use Models\Restaurant;
 
@@ -37,7 +34,6 @@ $restaurant = new Restaurant();
                 <input type="text" name="id" id="id"
                        class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full" readonly
                        value="<?php echo $id ?>">
-
             </div>
             <div class="mb-5">
                 <label class="text-white" for="naam">Naam</label>

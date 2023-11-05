@@ -14,7 +14,7 @@ class Restaurant
      * @param $naam
      * @param $locatie
      */
-    public function __construct($naam  = NULL, $locatie = NULL)
+    public function __construct($naam = NULL, $locatie = NULL)
     {
         $this->naam = $naam;
         $this->locatie = $locatie;
@@ -56,17 +56,15 @@ class Restaurant
         $naam = $this->getNaam();
         $locatie = $this->getLocatie();
 
-
         $sql = $conn->prepare("insert into restaurants values(:id, :naam, :locatie)");
 
         $sql->bindParam(":id", $id);
         $sql->bindParam(":naam", $naam);
         $sql->bindParam(":locatie", $locatie);
 
-
         $sql->execute();
 
-        header("refresh:3;url=gastReserveringen.php");
+        header("refresh:3;url=readRestaurant.php");
         ?>
 
         <html lang="en">
@@ -92,9 +90,9 @@ class Restaurant
             echo "<td class='border border-black p-2'>" . $restaurants["locatie"] . "</td>";
             echo "<td class='border border-black'>
                     <form action='../Restaurant/editRestaurant.php' method='post'>
-                        <input type='hidden' name='restaurant' value=" .$restaurants["id"].">
-                        <input type='hidden' name='naam' value=" .$restaurants["naam"]. ">
-                        <input type='hidden' name='locatie' value=" .$restaurants["locatie"]. ">
+                        <input type='hidden' name='id' value=" . $restaurants["id"] . ">
+                        <input type='hidden' name='naam' value=" . $restaurants["naam"] . ">
+                        <input type='hidden' name='locatie' value=" . $restaurants["locatie"] . ">
                         <input class='p-2   ' type='submit' value='Edit'>
                     </form>
                 </td>";
@@ -109,42 +107,28 @@ class Restaurant
         $naam = $this->getNaam();
         $locatie = $this->getLocatie();
 
-        $sql = $conn->prepare("update restaurants set naam = :naam, locatie = :locatie where id = :id");
+        $sql = $conn->prepare("UPDATE restaurants SET id = :id, naam = :naam, locatie = :locatie WHERE id = :id");
 
         $sql->bindParam(":id", $id);
         $sql->bindParam(":naam", $naam);
         $sql->bindParam(":locatie", $locatie);
+
         $sql->execute();
 
-        echo "Deze locatie is gewijzigd";
-    }
-
-    public function updateProfile($id)
-    {
-        require "../../Database/database.php";
-
-        $naam = $this->getNaam();
-        $locatie = $this->getLocatie();
-
-
-        $sql = $conn->prepare("update restaurant set naam = :naam, locatie = :locatie where id = :id");
-
-        $sql->bindParam(":id", $id);
-        $sql->bindParam(":naam", $naam);
-        $sql->bindParam(":locatie", $locatie);
-        $sql->execute();
-
-        echo "Deze locatie is gewijzigd";
+        echo "Dit restaurant is gewijzigd";
+        header("refresh:2;url=readRestaurant.php");
     }
 
     public function delete($id)
     {
         require "../../Database/database.php";
 
-        $sql = $conn->prepare("delete from restaurant where id = :id");
+        $sql = $conn->prepare("delete from restaurants where id = :id");
         $sql->bindParam(":id", $id);
         $sql->execute();
 
-        echo "Dit Restaurant is verwijderd.";
+        echo "Dit restaurant is verwijderd.";
+
+        header("refresh:2;url=readRestaurant.php");
     }
 }
