@@ -49,7 +49,7 @@ if (isset($_SESSION['id']) && $_SESSION['email']) {
                    class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full">
         </div>
         <div class="mb-5">
-            <label class="text-white" or="tochtSelect">Selecteer een tocht</label><br>
+            <label class="text-white" for="tochtSelect">Selecteer een tocht</label><br>
             <select name="tochten" id="tochtSelect" class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full">
             <?php $tochten->getAll() ?>
             </select>
