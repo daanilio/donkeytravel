@@ -115,24 +115,6 @@ class Ezels
         echo "Deze ezel is gewijzigd";
     }
 
-    public function updateProfile($id)
-    {
-        require "../../Database/database.php";
-
-        $naam = $this->getNaam();
-        $leeftijd = $this->getLeeftijd();
-
-
-        $sql = $conn->prepare("update ezels set naam = :naam, leeftijd = :leeftijd where id = :id");
-
-        $sql->bindParam(":id", $id);
-        $sql->bindParam(":naam", $naam);
-        $sql->bindParam(":leeftijd", $leeftijd);
-        $sql->execute();
-
-        echo "Deze ezel is gewijzigd";
-    }
-
     public function delete($id)
     {
         require "../../Database/database.php";

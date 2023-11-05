@@ -17,11 +17,10 @@
                    class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Informatie</a>
                 <a href="../index.php#overOns" class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Over
                     ons</a>
-                <a href="./createReservering.php" class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Reserveer</a>
+                <a href="../Reserveer/createReservering.php" class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Reserveer</a>
             </div>
         </div>
         <div class="flex justify-end uppercase text-sm">
-            <a href="../Medewerker/panel.php" class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Medewerker</a>
             <?php
             if (isset($_SESSION['id']) && $_SESSION['email']) {
                 echo '<a href="../../Views/Login/uitloggen.php" class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Uitloggen</a>';
@@ -29,8 +28,12 @@
                 echo '<a href="../../Views/Login/login.php" class="hover:bg-gray-600 hover:text-white rounded py-2 px-4 mx-2">Inloggen</a>';
             }
             ?>
-
-            <img class="flex m-0 p-0" src="../../Images/person.png" alt="account icon" style="max-width: 40px;">
+            <?php
+            if (isset($_SESSION['id']) && $_SESSION['email'] && ($_SESSION['functie'] != 'medewerker')) { ?>
+                <a href="../Gasten/MDT.php"><img class="flex m-0 p-0" src="../../Images/person.png" alt="account icon" style="max-width: 40px;"></a>
+            <?php }else { ?>
+                <a href="../Medewerker/panel.php"><img class="flex m-0 p-0" src="../../Images/person.png" alt="account icon" style="max-width: 40px;"></a>
+            <?php } ?>
         </div>
     </nav>
 </header>

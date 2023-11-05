@@ -6,6 +6,7 @@ require_once '../../Database/database.php';
 require '../../Models/Reserveer.php';
 
 $reserveerId = $_POST["reserveerId"];
+$klantId = $_POST["klantId"];
 $reserveerVoornaam = $_POST["reserveerVoornaam"];
 $reserveerAchternaam = $_POST["reserveerAchternaam"];
 $reserveerEmail = $_POST["reserveerEmail"];
@@ -48,7 +49,12 @@ if ($_SESSION['functie'] === "medewerker") {
                 <input type="text" name="id" id="id"
                        class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full" readonly
                        value="<?php echo $reserveerId ?>">
-
+            </div>
+            <div class="mb-5">
+                <label class="text-white" for="klantId">Klant id</label>
+                <input type="text" name="klantId" id="klantId"
+                       class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full" readonly
+                       value="<?php echo $klantId ?>">
             </div>
             <div class="mb-5">
                 <label class="text-white" for="voornaam">Voornaam</label>
@@ -57,7 +63,7 @@ if ($_SESSION['functie'] === "medewerker") {
                        value="<?php echo $reserveerVoornaam ?>">
             </div>
             <div class="mb-5">
-                <label class="text-white" for="achternaam">Achteraam</label>
+                <label class="text-white" for="achternaam">Achternaam</label>
                 <input type="text" name="achternaam" id="achternaam"
                        class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full"
                        value="<?php echo $reserveerAchternaam ?>">
@@ -117,9 +123,9 @@ if ($_SESSION['functie'] === "medewerker") {
     <div class="flex justify-center align-center my-auto mb-20 bg-green-800 rounded-b-lg w-1/2 mx-auto">
         <form action="deleteReserveringBevestiging.php" method="post" class="w-full mx-12 pb-4">
             <input type="hidden" name="reserveerId" id="reserveerId" value="<?php echo $reserveerId ?>">
-            <input type="hidden" name="id" id="id"
+            <input type="hidden" name="klantId" id="klantId"
                    class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full" readonly
-                   value="<?php echo $reserveerId ?>">
+                   value="<?php echo $klantId ?>">
             <input type="hidden" name="voornaam" id="voornaam"
                    class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full"
                    value="<?php echo $reserveerVoornaam ?>">

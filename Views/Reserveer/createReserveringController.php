@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -15,6 +16,7 @@
 require_once '../../Models/Reserveer.php';
 use Models\Reserveer;
 
+$klantId = $_SESSION['id'];
 $reserveerVoornaam = $_POST["voornaam"];
 $reserveerAchternaam = $_POST["achternaam"];
 $reserveerEmail = $_POST["email"];
@@ -23,7 +25,7 @@ $reserveerTocht = $_POST["tochten"];
 $reserveerDatum = $_POST["datum"];
 $reserveerStatus = 1;
 
-$reservering = new Reserveer($reserveerVoornaam, $reserveerAchternaam, $reserveerEmail, $reserveerPersonen, $reserveerTocht, $reserveerDatum, $reserveerStatus);
+$reservering = new Reserveer($klantId, $reserveerVoornaam, $reserveerAchternaam, $reserveerEmail, $reserveerPersonen, $reserveerTocht, $reserveerDatum, $reserveerStatus);
 $reservering->create();
 ?>
 

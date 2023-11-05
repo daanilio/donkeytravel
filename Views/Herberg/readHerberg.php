@@ -1,17 +1,16 @@
 <?php
 
-require_once '../../Models/Reserveer.php';
+require_once '../../Models/Herbergen.php';
 
-use Models\Reserveer;
+use Models\Herbergen;
 
-$reserveer = new Reserveer();
+$herberg = new Herbergen();
 
 // Checks if you're logged in and if you have the right permissions.
 session_start();
 
 if (isset($_SESSION['id']) && $_SESSION['email']) {
 if ($_SESSION['functie'] === "medewerker") {
-
 ?>
 
 <!doctype html>
@@ -21,7 +20,7 @@ if ($_SESSION['functie'] === "medewerker") {
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Reserveringen</title>
+    <title>Herberg</title>
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="flex min-h-screen justify-between flex-col">
@@ -31,18 +30,12 @@ if ($_SESSION['functie'] === "medewerker") {
 <main class="py-18 px-64 flex justify-center">
     <table class="table-fixed border border-black border-collape">
         <tr class="border border-black">
-            <th class="border border-black p-2">Reservering id</th>
-            <th class="border border-black p-2">Klant id</th>
-            <th class="border border-black p-2">Voornaam</th>
-            <th class="border border-black p-2">Achternaam</th>
-            <th class="border border-black p-2">Email</th>
-            <th class="border border-black p-2">Personen</th>
-            <th class="border border-black p-2">Tochtnaam</th>
-            <th class="border border-black p-2">Datum</th>
-            <th class="border border-black p-2">Status</th>
-            <th class="border border-black p-2"></th>
+            <th class="border border-black p-2">Id</th>
+            <th class="border border-black p-2">Naam</th>
+            <th class="border border-black p-2">Locatie</th>
+            <th class="border border-black p-2">Sterren</th>
         </tr>
-        <?php $reserveer->read(); ?>
+        <?php $herberg->read(); ?>
     </table>
 </main>
 

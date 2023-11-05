@@ -14,48 +14,59 @@
 include '../../Components/header.php';
 require_once '../../Database/database.php';
 
-require '../../Models/Ezels.php';
+$id = $_POST["id"];
+$naam = $_POST["naam"];
+$locatie = $_POST["locatie"];
+$sterren = $_POST["sterren"];
 
-$ezelId = $_POST["ezelId"];
-$ezelNaam = $_POST["naam"];
-$ezelLeeftijd = $_POST["leeftijd"];
+require_once '../../Models/Herbergen.php';
 
-require_once '../../Models/Ezels.php';
+use Models\Herbergen;
 
-use Models\Ezels;
+$herberg = new Herbergen();
 
-$ezels = new Ezels();
+// Checks if you're logged in and if you have the right permissions.
+session_start();
+
+if (isset($_SESSION['id']) && $_SESSION['email']) {
+if ($_SESSION['functie'] === "medewerker") {
 ?>
 
 <main class="py-18 px-64">
     <div class="flex justify-center align-center my-auto">
         <form class="w-1/2 bg-green-800 rounded-lg px-12 py-12 mt-12 text-black flex flex-col mb-10"
-              action="deleteEzelController.php"
+              action="deleteHerbergController.php"
               method="post">
             <div class="mb-5">
-                <label class="text-white" for="id">Ezels id</label>
+                <label class="text-white" for="id">Id</label>
                 <input type="text" name="id" id="id"
                        class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full" readonly
-                       value="<?php echo $ezelId ?>">
+                       value="<?php echo $id ?>">
 
             </div>
             <div class="mb-5">
                 <label class="text-white" for="naam">Naam</label>
                 <input type="text" name="naam" id="naam"
                        class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full" readonly
-                       value="<?php echo $ezelNaam ?>">
+                       value="<?php echo $naam ?>">
             </div>
             <div class="mb-5">
-                <label class="text-white" for="achternaam">Leeftijd</label>
-                <input type="text" name="leeftijd" id="leeftijd"
+                <label class="text-white" for="locatie">Locatie</label>
+                <input type="text" name="locatie" id="locatie"
                        class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full" readonly
-                       value="<?php echo $ezelLeeftijd ?>">
+                       value="<?php echo $locatie ?>">
+            </div>
+            <div class="mb-5">
+                <label class="text-white" for="sterren">Locatie</label>
+                <input type="text" name="sterren" id="sterren"
+                       class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full" readonly
+                       value="<?php echo $sterren ?>">
             </div>
             <div class="flex flex-col">
                 <label class="text-white text-center" for="bevestiging">
-                    Weet u zeker dat u deze Ezel wilt verwijderen?</label>
+                    Weet u zeker dat u deze herberg wilt verwijderen?</label>
             </div>
-            <input type="submit" value="Verwijder Ezel"
+            <input type="submit" value="Verwijder Herberg"
                    class="p-1 mt-2 bg-red-500 hover:bg-red-600 border border-gray-700 w-full rounded-md text-white">
         </form>
     </div>
@@ -65,5 +76,13 @@ $ezels = new Ezels();
 
 </body>
 </html>
-
+<?php
+} else {
+    header("Location: ../index.php");
+}
+} else {
+    header("Location: ../index.php");
+    exit();
+}
+?>
 
