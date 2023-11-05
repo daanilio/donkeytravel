@@ -65,6 +65,10 @@ if (isset($_SESSION['id']) && $_SESSION['email']) {
                        class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full" readonly
                        value="<?php echo $email ?>">
             </div>
+            <div class="flex flex-col">
+                <label class="text-white text-center" for="bevestiging">
+                    Weet u zeker dat u deze reservering wilt verwijderen?</label>
+            </div>
             <input type="submit" value="Verwijder gebruiker"
                    class="p-1 mt-2 bg-red-500 hover:bg-red-600 border border-gray-700 w-full rounded-md text-white">
         </form>

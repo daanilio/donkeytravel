@@ -33,7 +33,7 @@ if ($_SESSION['functie'] === "medewerker") {
     <?php $herberg->update($id); ?>
     <br>
     <br>
-    <p class="text-center"><a  href='../index.php'>Ga terug naar de hoofdpagina</a></p>
+    <p class="text-center"><a  href='../index.php'>.    Ga terug naar de hoofdpagina</a></p>
 </main>
 <?php include '../../Components/footer.php'; ?>
 
