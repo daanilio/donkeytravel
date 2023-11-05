@@ -52,12 +52,10 @@ if ($_SESSION['functie'] === "medewerker") {
                        value="<?php echo $naam ?>">
             </div>
             <div class="mb-5">
-                <label class="text-white" for="achternaam">leeftijd</label>
+                <label class="text-white" for="leeftijd">Leeftijd</label>
                 <input type="text" name="leeftijd" id="leeftijd"
                        class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full"
                        value="<?php echo $leeftijd ?>">
-            </div>
-
             </div>
 
             <input type="submit" name="verzenden" id="button" value="Updaten"
