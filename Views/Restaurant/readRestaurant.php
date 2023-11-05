@@ -1,16 +1,11 @@
 <?php
 
-require_once '../../Models/Ezels.php';
+require_once '../../Models/Restaurant.php';
 
-use Models\Ezels;
+use Models\Restaurant;
 
-$ezel = new Ezels();
+$restaurant = new Restaurant();
 
-// Checks if you're logged in and if you have the right permissions.
-session_start();
-
-if (isset($_SESSION['id']) && $_SESSION['email']) {
-if ($_SESSION['functie'] === "medewerker") {
 ?>
 
 <!doctype html>
@@ -30,11 +25,11 @@ if ($_SESSION['functie'] === "medewerker") {
 <main class="py-18 px-64 flex justify-center">
     <table class="table-fixed border border-black border-collaps">
         <tr class="border border-black">
-            <th class="border border-black p-2">Ezel id</th>
+            <th class="border border-black p-2">Restaurant id</th>
             <th class="border border-black p-2">Naam</th>
-            <th class="border border-black p-2">Leeftijd</th>
+            <th class="border border-black p-2">Locatie</th>
         </tr>
-        <?php $ezel->read(); ?>
+        <?php $restaurant->read(); ?>
     </table>
 </main>
 
@@ -42,13 +37,5 @@ if ($_SESSION['functie'] === "medewerker") {
 
 </body>
 </html>
-    <?php
-} else {
-    header("Location: ../index.php");
-}
-} else {
-    header("Location: ../index.php");
-    exit();
-}
-?>
+
 
