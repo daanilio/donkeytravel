@@ -117,12 +117,12 @@ class Gebruikers
 
         foreach ($sql as $gebruiker) {
             echo "<tr>";
-            echo "<td class='border border-black'>" . $gebruiker["voornaam"] . "</td>";
-            echo "<td class='border border-black'>" . $gebruiker["achternaam"] . "</td>";
-            echo "<td class='border border-black'>" . $gebruiker["email"] . "</td>";
+            echo "<td class='border border-black p-2'>" . $gebruiker["voornaam"] . "</td>";
+            echo "<td class='border border-black p-2'>" . $gebruiker["achternaam"] . "</td>";
+            echo "<td class='border border-black p-2'>" . $gebruiker["email"] . "</td>";
             if ($gebruiker["functie"] === "medewerker") {
                 echo "<td class='border border-black'>Medewerker</td>";
-            } elseif ($gebruiker["functie"] === 0) {
+            } elseif ($gebruiker["functie"] === 'klant') {
                 echo "<td class='border border-black'>Klant</td>";
             }
             echo "<td class='border border-black'>
@@ -132,7 +132,7 @@ class Gebruikers
                         <input type='hidden' name='achternaam' value=" .$gebruiker["achternaam"]. ">
                         <input type='hidden' name='email' value=" .$gebruiker["email"]. ">
                         <input type='hidden' name='functie' value=" .$gebruiker["functie"]. ">
-                        <input type='submit' value='Edit'>
+                        <input type='submit' class='p-2' value='Edit'>
                     </form>
                 </td>";
             echo "</tr>";
