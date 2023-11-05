@@ -96,16 +96,16 @@ class Herbergen
 
         foreach ($sql as $herberg) {
             echo "<tr>";
-            echo "<td class='border border-black'>" . $herberg["naam"] . "</td>";
-            echo "<td class='border border-black'>" . $herberg["locatie"] . "</td>";
-            echo "<td class='border border-black'>" . $herberg["sterren"] . "</td>";
+            echo "<td class='border border-black p-2'>" . $herberg["naam"] . "</td>";
+            echo "<td class='border border-black p-2'>" . $herberg["locatie"] . "</td>";
+            echo "<td class='border border-black p-2'>" . $herberg["sterren"] . "</td>";
             echo "<td class='border border-black'>
                     <form action='../Herberg/editHerberg.php' method='post'>
                         <input type='hidden' name='id' value=" .$herberg["id"].">
                         <input type='hidden' name='naam' value=" .$herberg["naam"]. ">
                         <input type='hidden' name='locatie' value=" .$herberg["locatie"]. ">
                         <input type='hidden' name='sterren' value=" .$herberg["sterren"]. ">
-                        <input type='submit' value='Edit'>
+                        <input class='p-2 w-full' type='submit' value='Edit'>
                     </form>
                 </td>";
             echo "</tr>";

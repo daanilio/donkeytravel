@@ -63,11 +63,10 @@ if ($_SESSION['functie'] === "medewerker") {
                 </select>
             </div>
 
-    </div>
 
-    <input type="submit" name="verzenden" id="button" value="Updaten"
-           class="p-1 bg-green-200 hover:bg-green-400 border border-gray-700 w-full rounded-md">
-    </form>
+            <input type="submit" name="verzenden" id="button" value="Updaten"
+                   class="p-1 bg-green-200 hover:bg-green-400 border border-gray-700 w-full rounded-md">
+        </form>
     </div>
 
     <div class="flex justify-center align-center my-auto mb-20 bg-green-800 rounded-b-lg w-1/2 mx-auto">
