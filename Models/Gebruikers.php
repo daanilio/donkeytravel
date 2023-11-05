@@ -121,9 +121,9 @@ class Gebruikers
             echo "<td class='border border-black p-2'>" . $gebruiker["achternaam"] . "</td>";
             echo "<td class='border border-black p-2'>" . $gebruiker["email"] . "</td>";
             if ($gebruiker["functie"] === "medewerker") {
-                echo "<td class='border border-black'>Medewerker</td>";
+                echo "<td class='border border-black p-2'>Medewerker</td>";
             } elseif ($gebruiker["functie"] === 'klant') {
-                echo "<td class='border border-black'>Klant</td>";
+                echo "<td class='border border-black p-2'>Klant</td>";
             }
             echo "<td class='border border-black'>
                     <form action='../Gebruiker/editGebruiker.php' method='post'>

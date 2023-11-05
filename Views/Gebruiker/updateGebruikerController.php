@@ -33,7 +33,7 @@ if ($_SESSION['functie'] === "medewerker") {
 <?php include '../../Components/header.php'; ?>
 <main class="py-18 px-64 flex justify-center">
     <?php $gebruiker->update($id); ?>
-    <p class="text-center"><a  href='../index.php'>Ga terug naar de hoofdpagina</a></p>
+    <p class="text-center"><a  href='../index.php'>. Ga terug naar de hoofdpagina</a></p>
 </main>
 <?php include '../../Components/footer.php'; ?>
 
