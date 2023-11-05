@@ -77,11 +77,11 @@ if (isset($_SESSION['id']) && $_SESSION['email']) {
                             class="border-b-4 border-green-800">Restaurants</span></h2>
                 <div class="mb-4"><br>
                     <span class="hover:bg-gray-800 hover:text-white p-3 border-2 rounded-lg text-center border-green-800 bg-white"><a
-                                href="../Restaurants/createRestaurant.php">Create</a></span>
+                                href="../Restaurant/createRestaurant.php">Create</a></span>
                     <span class="hover:bg-gray-800 hover:text-white p-3 border-2 rounded-lg text-center border-green-800 bg-white"><a
-                                href="../Restaurants/readRestaurant.php">Read</a></span>
+                                href="../Restaurant/readRestaurant.php">Read</a></span>
                     <span class="hover:bg-gray-800 hover:text-white p-3 border-2 rounded-lg text-center border-green-800 bg-white"><a
-                                href="../Restaurants/readRestaurant.php">Update/Delete</a></span>
+                                href="../Restaurant/readRestaurant.php">Update/Delete</a></span>
                 </div>
             </div>
         </div>
