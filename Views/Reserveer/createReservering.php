@@ -12,7 +12,6 @@ $tochten = new Tochten();
 $date = date("Y-m-d");
 $datePlusWeeks = date("Y-m-d", strtotime($date . "+2 week"));
 
-
 // Checks if you're logged in and if you have the right permissions.
 session_start();
 
@@ -33,6 +32,9 @@ if (isset($_SESSION['id']) && $_SESSION['email']) {
 
 <main class="py-18 px-64 flex justify-center">
     <form class="w-1/2 bg-green-800 rounded-lg p-12 m-12 text-black" action="createReserveringController.php" method="post">
+        <label class="text-white hidden" for="id">Klant Id</label>
+        <input readonly type="text" name="id" id="id" placeholder="<?php echo $_SESSION['id']; ?>"
+               class="hidden p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full">
         <div class="mb-5">
             <label class="text-white" for="voornaam">Voornaam</label>
             <input type="text" name="voornaam" id="voornaam"
@@ -61,7 +63,7 @@ if (isset($_SESSION['id']) && $_SESSION['email']) {
         </div>
         <div class="mb-5">
             <label class="text-white" for="datum">Startdatum rit</label>
-            <input type="date" name="datum" id="datum" min="<?php $datePlusWeeks ?>"
+            <input type="date" name="datum" id="datum" min="<?php echo $datePlusWeeks ?>"
                    class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full">
         </div>
 

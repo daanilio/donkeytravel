@@ -15,6 +15,9 @@ $reserveerPersonen = $_POST["reserveerPersonen"];
 $reserveerDatum = $_POST["reserveerDatum"];
 $reserveerStatus = $_POST["reserveerStatus"];
 
+$date = date("Y-m-d");
+$datePlusWeeks = date("Y-m-d", strtotime($date . "+2 week"));
+
 require_once '../../Models/Tochten.php';
 
 use Models\Tochten;
@@ -76,7 +79,7 @@ if ($_SESSION['functie'] === "medewerker") {
             </div>
             <div class="mb-5">
                 <label class="text-white" for="personen">Aantal personen</label>
-                <input type="number" name="personen" id="personen"
+                <input type="number" name="personen" id="personen" min="1"
                        class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full"
                        value="<?php echo $reserveerPersonen ?>">
             </div>
@@ -90,7 +93,7 @@ if ($_SESSION['functie'] === "medewerker") {
             </div>
             <div class="mb-5">
                 <label class="text-white" for="datum">Startdatum rit</label>
-                <input type="date" name="datum" id="datum"
+                <input type="date" name="datum" id="datum" min="<?php echo $datePlusWeeks ?>"
                        class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full"
                        value="<?php echo $reserveerDatum ?>">
             </div>
