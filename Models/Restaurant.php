@@ -65,6 +65,8 @@ class Restaurant
 
 
         $sql->execute();
+
+        header("refresh:3;url=gastReserveringen.php");
         ?>
 
         <html lang="en">
@@ -85,14 +87,15 @@ class Restaurant
 
         foreach ($sql as $restaurants) {
             echo "<tr>";
-            echo "<td class='border border-black'>" . $restaurants["naam"] . "</td>";
-            echo "<td class='border border-black'>" . $restaurants["locatie"] . "</td>";
+            echo "<td class='border border-black p-2'>" . $restaurants["id"] . "</td>";
+            echo "<td class='border border-black p-2'>" . $restaurants["naam"] . "</td>";
+            echo "<td class='border border-black p-2'>" . $restaurants["locatie"] . "</td>";
             echo "<td class='border border-black'>
                     <form action='../Restaurant/editRestaurant.php' method='post'>
                         <input type='hidden' name='restaurant' value=" .$restaurants["id"].">
                         <input type='hidden' name='naam' value=" .$restaurants["naam"]. ">
                         <input type='hidden' name='locatie' value=" .$restaurants["locatie"]. ">
-                        <input type='submit' value='Edit'>
+                        <input class='p-2   ' type='submit' value='Edit'>
                     </form>
                 </td>";
             echo "</tr>";
