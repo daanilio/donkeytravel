@@ -9,10 +9,15 @@ use Models\Tochten;
 
 $tochten = new Tochten();
 
+$date = date("Y-m-d");
+$datePlusWeeks = date("Y-m-d", strtotime($date . "+2 week"));
+
+
 // Checks if you're logged in and if you have the right permissions.
 session_start();
 
 if (isset($_SESSION['id']) && $_SESSION['email']) {
+    echo $_SESSION['id'];
 ?>
 <!doctype html>
 <html lang="en">
@@ -45,7 +50,7 @@ if (isset($_SESSION['id']) && $_SESSION['email']) {
         </div>
         <div class="mb-5">
             <label class="text-white" for="personen">Aantal personen</label>
-            <input type="number" name="personen" id="personen"
+            <input type="number" name="personen" id="personen" min="1"
                    class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full">
         </div>
         <div class="mb-5">
@@ -56,7 +61,7 @@ if (isset($_SESSION['id']) && $_SESSION['email']) {
         </div>
         <div class="mb-5">
             <label class="text-white" for="datum">Startdatum rit</label>
-            <input type="date" name="datum" id="datum"
+            <input type="date" name="datum" id="datum" min="<?php $datePlusWeeks ?>"
                    class="p-1 hover:bg-gray-200 border border-gray-700 rounded-md min-w-full">
         </div>
 
