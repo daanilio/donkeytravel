@@ -91,7 +91,7 @@ class Ezels
                         <input type='hidden' name='ezelId' value=" .$ezel["id"].">
                         <input type='hidden' name='naam' value=" .$ezel["naam"]. ">
                         <input type='hidden' name='leeftijd' value=" .$ezel["leeftijd"]. ">
-                        <input type='submit' value='Edit'>
+                        <input class='w-full' type='submit' value='Edit'>
                     </form>
                 </td>";
             echo "</tr>";
